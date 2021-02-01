@@ -19,7 +19,7 @@ namespace Diamond.SkeletonDefense.Character
         /// <summary>
         /// 移動スピード
         /// </summary>
-        public int Speed;
+        public float Speed;
 
         /// <summary>
         /// 守備力
@@ -30,5 +30,10 @@ namespace Diamond.SkeletonDefense.Character
         /// 敵キャラクターとの距離
         /// </summary>
         public float DistanseBetweenEnemy;
+
+        /// <summary>
+        /// 攻撃頻度（低いほど攻撃頻度が高くなる）
+        /// </summary>
+        public float FrequenceOfAttack;
     }
 }

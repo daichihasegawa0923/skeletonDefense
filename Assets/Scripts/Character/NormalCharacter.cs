@@ -13,6 +13,12 @@ namespace Diamond.SkeletonDefense.Character
         [SerializeField]
         protected string _teamId;
 
+        /// <summary>
+        /// アニメーションコントローラ
+        /// </summary>
+        [SerializeField]
+        protected Animator _animator;
+
         public override string TeamId => this._teamId;
 
         /// <summary>
@@ -21,22 +27,15 @@ namespace Diamond.SkeletonDefense.Character
         protected CharacterBase _targetEnemy;
 
         /// <summary>
-        /// 移動速度
-        /// </summary>
-        [SerializeField]
-        protected float _speed;
-
-        /// <summary>
-        /// 敵キャラクターと対峙したときに止まる位置
-        /// </summary>
-        [SerializeField]
-        protected float _stopDistance;
-
-        /// <summary>
         /// 敵を認識するためのリスト
         /// </summary>
         [SerializeField]
         private List<CharacterBase> _enemies = new List<CharacterBase>();
+
+        public static readonly string WALK_ANIMATION_TRIGGER = "IsWalking";
+        public static readonly string ATTACK_ANIMATION_TRIGGER = "IsAttacking";
+        public static readonly string STAY_ANIMATION_TRIGGER = "IsStaying";
+
 
         protected virtual void Start()
         {
@@ -46,22 +45,20 @@ namespace Diamond.SkeletonDefense.Character
 
         protected virtual void Update()
         {
-            this.ChangeBehaviourByFaze();
+            this.ActByBehaviour();
         }
 
         public override void Attack()
         {
-            if(this.CharacterBehaviour != CharacterBehaviour.Attack)
-            {
-                this.CharacterBehaviour = CharacterBehaviour.Attack;
-                StartCoroutine("AttackCoroutine");
-            }
 
             if(_targetEnemy == null || this.IsDead())
             {
                 StopCoroutine("AttackCoroutine");
-                this.CharacterBehaviour = CharacterBehaviour.Move;
+                this.ChangeBehaviour(CharacterBehaviour.Move);
+                return;
             }
+
+            transform.LookAt(_targetEnemy.transform.position);
         }
 
         public override void Damaged(int damage)
@@ -72,16 +69,26 @@ namespace Diamond.SkeletonDefense.Character
 
         protected override CharacterBase FindTargetEnemy()
         {
+            // 消えたオブジェクトをリストから
+            for(var i = 0; i < _enemies.Count; i++)
+            {
+                if (_enemies[i] == null)
+                    _enemies.RemoveAt(i);
+            }
+
             if (_enemies == null || _enemies.Count == 0)
                 return null;
 
             return _enemies.OrderBy(en => Vector3.Distance(en.transform.position, transform.position)).FirstOrDefault();
         }
 
-        protected override void ChangeBehaviourByFaze()
+        protected override void ActByBehaviour()
         {
             switch(this.CharacterBehaviour)
             {
+                case CharacterBehaviour.Stay:
+                    this.Stay();
+                    break;
                 case CharacterBehaviour.Move:
 
                     var targetEn = this.FindTargetEnemy();
@@ -97,6 +104,7 @@ namespace Diamond.SkeletonDefense.Character
                     this.Attack();
                     break;
                 case CharacterBehaviour.Dead:
+                    this.Dead();
                     break;
                 default:
                     break;
@@ -106,24 +114,34 @@ namespace Diamond.SkeletonDefense.Character
         protected override void Move()
         {
             if (_targetEnemy == null)
-                return;
-
-            if (this.IsDead())
             {
-                this.CharacterBehaviour = CharacterBehaviour.Dead;
+                this.ChangeBehaviour(CharacterBehaviour.Stay);
                 return;
             }
 
-            if (Vector3.Distance(transform.position, _targetEnemy.transform.position) <= _stopDistance)
-                this.Attack();
+            if (this.IsDead())
+            {
+                this.ChangeBehaviour(CharacterBehaviour.Dead);
+                return;
+            }
+
+            if (Vector3.Distance(transform.position, _targetEnemy.transform.position) <= this.CharacterStatus.DistanseBetweenEnemy)
+            {
+                this.ChangeBehaviour(CharacterBehaviour.Attack);
+                return;
+            }
 
             transform.LookAt(_targetEnemy.transform.position);
-            transform.position += transform.forward * _speed;
+            transform.position += transform.forward * this.CharacterStatus.Speed;
         }
 
         protected override IEnumerator AttackCoroutine()
         {
-            throw new System.NotImplementedException();
+            while(true)
+            {
+                _targetEnemy.Damaged(this.CharacterStatus.Power);
+                yield return new WaitForSeconds(this.CharacterStatus.FrequenceOfAttack);
+            }
         }
 
         public override bool IsDead()
@@ -133,7 +151,35 @@ namespace Diamond.SkeletonDefense.Character
 
         protected override void Dead()
         {
+            Destroy(gameObject);
+        }
 
+        protected override void Stay()
+        {
+
+        }
+
+        public override void ChangeBehaviour(CharacterBehaviour characterBehaviour)
+        {
+            switch (characterBehaviour)
+            {
+                case CharacterBehaviour.Stay:
+                    _animator.SetTrigger(NormalCharacter.STAY_ANIMATION_TRIGGER);
+                    break;
+                case CharacterBehaviour.Move:
+                    _animator.SetTrigger(NormalCharacter.WALK_ANIMATION_TRIGGER);
+                    break;
+                case CharacterBehaviour.Attack:
+                    StartCoroutine("AttackCoroutine");
+                    _animator.SetTrigger(NormalCharacter.ATTACK_ANIMATION_TRIGGER);
+                    break;
+                case CharacterBehaviour.Dead:
+                    break;
+                default:
+                    break;
+            }
+
+            this.CharacterBehaviour = characterBehaviour;
         }
     }
 }

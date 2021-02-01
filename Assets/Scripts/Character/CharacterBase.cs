@@ -31,6 +31,11 @@ namespace Diamond.SkeletonDefense.Character
         public abstract void Damaged(int damage);
 
         /// <summary>
+        /// 待機中
+        /// </summary>
+        protected abstract void Stay();
+
+        /// <summary>
         /// 攻撃
         /// </summary>
         public abstract void Attack();
@@ -60,12 +65,18 @@ namespace Diamond.SkeletonDefense.Character
         /// <summary>
         /// 行動に変化をつける（Updateメソッドで回す）
         /// </summary>
-        protected abstract void ChangeBehaviourByFaze();
+        protected abstract void ActByBehaviour();
 
         /// <summary>
         /// 死亡時の挙動
         /// </summary>
         protected abstract void Dead();
+
+        /// <summary>
+        /// キャラクターの状態を変えます。
+        /// </summary>
+        /// <param name="characterBehaviour"></param>
+        public abstract void ChangeBehaviour(CharacterBehaviour characterBehaviour);
     }
 
     /// <summary>
@@ -73,6 +84,11 @@ namespace Diamond.SkeletonDefense.Character
     /// </summary>
     public enum CharacterBehaviour
     {
+        /// <summary>
+        /// 待機中
+        /// </summary>
+        Stay,
+
         /// <summary>
         /// 移動中
         /// </summary>
