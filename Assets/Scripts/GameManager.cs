@@ -8,15 +8,29 @@ namespace Diamond.SkeletonDefense
 {
     public class GameManager : MonoBehaviour
     {
+        /// <summary>
+        /// 盤面のキャラクターたち
+        /// </summary>
         [SerializeField]
         List<CharacterBase> _characterBases;
+
+        [SerializeField]
+        private BattleFazeUIManager _battleFazeUIManager;
+
+        /// <summary>
+        /// ゲームの進行状況
+        /// </summary>
+        public static GameFaze GameFaze { private set; get; } = GameFaze.PrepareForFighting;
+
+        private void Awake()
+        {
+            GameManager.GameFaze = GameFaze.PrepareForFighting;
+        }
+
         // Start is called before the first frame update
         void Start()
         {
-            _characterBases = FindObjectsOfType<CharacterBase>().ToList();
-            _characterBases.ForEach(c => c.ChangeBehaviour(CharacterBehaviour.Move));
 
-            StartCoroutine("GetCharacters");
         }
 
         // Update is called once per frame
@@ -25,17 +39,33 @@ namespace Diamond.SkeletonDefense
 
         }
 
-        /// <summary>
-        /// キャラクターリストを更新する
-        /// </summary>
-        /// <returns></returns>
-        private IEnumerator GetCharacters()
+        public void GameStart()
         {
-            while(true)
-            {
-                this._characterBases = FindObjectsOfType<CharacterBase>().ToList();
-                yield return new WaitForSeconds(2.0f);
-            }
+            _characterBases = FindObjectsOfType<CharacterBase>().ToList();
+            _characterBases.ForEach(c => c.ChangeBehaviour(CharacterBehaviour.Move));
+            GameFaze = GameFaze.InBattle;
+            _battleFazeUIManager.SetBattleUI();
         }
+    }
+
+    /// <summary>
+    /// ゲームの進行状況を表します。
+    /// </summary>
+    public enum GameFaze
+    {
+        /// <summary>
+        /// 戦闘準備中
+        /// </summary>
+        PrepareForFighting,
+
+        /// <summary>
+        /// 戦闘中
+        /// </summary>
+        InBattle,
+
+        /// <summary>
+        /// 試合結果
+        /// </summary>
+        Result
     }
 }
