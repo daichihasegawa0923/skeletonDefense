@@ -14,8 +14,17 @@ namespace Diamond.SkeletonDefense
         [SerializeField]
         List<CharacterBase> _characterBases;
 
+        /// <summary>
+        /// 
+        /// </summary>
         [SerializeField]
         private BattleFazeUIManager _battleFazeUIManager;
+
+        /// <summary>
+        /// 指での操作
+        /// </summary>
+        [SerializeField]
+        private FingerControlManager _fingerControlManager;
 
         /// <summary>
         /// ゲームの進行状況
@@ -37,6 +46,15 @@ namespace Diamond.SkeletonDefense
         void Update()
         {
 
+        }
+
+        /// <summary>
+        /// 配置するキャラクターを決定する
+        /// </summary>
+        /// <param name="characterBase">配置するキャラクター</param>
+        public void SetPutCharacter(CharacterBase characterBase)
+        {
+            _fingerControlManager.PutCharacter = characterBase;
         }
 
         public void GameStart()

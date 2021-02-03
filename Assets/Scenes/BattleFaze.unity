@@ -1428,6 +1428,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characterBases: []
   _battleFazeUIManager: {fileID: 784825383}
+  _fingerControlManager: {fileID: 0}
 --- !u!1 &1498448282
 GameObject:
   m_ObjectHideFlags: 0
@@ -1677,7 +1678,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c450d7c2c44db46f48aa827241991094, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _putCharacter: {fileID: 0}
+  _fingerPutTime: 0
+  _isFingerPut: 0
+  _putCharacter: {fileID: 8076000398967352355, guid: 5c8efe866a346664eac5d218f5568228, type: 3}
+  _fingerTimeSeparate: 0.25
+  _cameraXMax: 30
+  _cameraZMax: 15
 --- !u!1001 &1785189649
 PrefabInstance:
   m_ObjectHideFlags: 0
