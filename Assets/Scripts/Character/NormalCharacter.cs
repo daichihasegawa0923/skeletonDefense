@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -69,12 +70,7 @@ namespace Diamond.SkeletonDefense.Character
 
         protected override CharacterBase FindTargetEnemy()
         {
-            // 消えたオブジェクトをリストから
-            for(var i = 0; i < _enemies.Count; i++)
-            {
-                if (_enemies[i] == null)
-                    _enemies.RemoveAt(i);
-            }
+            _enemies = FindObjectsOfType<CharacterBase>().Where(characterBase => characterBase.TeamId != this.TeamId).ToList();
 
             if (_enemies == null || _enemies.Count == 0)
                 return null;
@@ -93,7 +89,10 @@ namespace Diamond.SkeletonDefense.Character
 
                     var targetEn = this.FindTargetEnemy();
                     if (targetEn == null)
+                    {
+                        this.CharacterBehaviour = CharacterBehaviour.Stay;
                         return;
+                    }
                     if(_targetEnemy != targetEn)
                         _targetEnemy = targetEn;
 
@@ -161,17 +160,19 @@ namespace Diamond.SkeletonDefense.Character
 
         public override void ChangeBehaviour(CharacterBehaviour characterBehaviour)
         {
+            var animationSetTriggerAction = new Action<string>((name) => { if (_animator == null || name == null) return; _animator.SetTrigger(name); });
+
             switch (characterBehaviour)
             {
                 case CharacterBehaviour.Stay:
-                    _animator.SetTrigger(NormalCharacter.STAY_ANIMATION_TRIGGER);
+                    animationSetTriggerAction(NormalCharacter.STAY_ANIMATION_TRIGGER);
                     break;
                 case CharacterBehaviour.Move:
-                    _animator.SetTrigger(NormalCharacter.WALK_ANIMATION_TRIGGER);
+                    animationSetTriggerAction(NormalCharacter.WALK_ANIMATION_TRIGGER);
                     break;
                 case CharacterBehaviour.Attack:
                     StartCoroutine("AttackCoroutine");
-                    _animator.SetTrigger(NormalCharacter.ATTACK_ANIMATION_TRIGGER);
+                    animationSetTriggerAction(NormalCharacter.ATTACK_ANIMATION_TRIGGER);
                     break;
                 case CharacterBehaviour.Dead:
                     break;

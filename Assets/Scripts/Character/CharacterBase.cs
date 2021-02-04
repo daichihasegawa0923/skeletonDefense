@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -77,6 +78,11 @@ namespace Diamond.SkeletonDefense.Character
         /// </summary>
         /// <param name="characterBehaviour"></param>
         public abstract void ChangeBehaviour(CharacterBehaviour characterBehaviour);
+
+        public static implicit operator CharacterBase(GameObject v)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     /// <summary>
