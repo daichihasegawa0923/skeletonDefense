@@ -707,7 +707,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh14710
+  m_Name: pb_Mesh16548
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1092,6 +1092,10 @@ PrefabInstance:
       propertyPath: Power
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 8076000398967352352, guid: 5c8efe866a346664eac5d218f5568228, type: 3}
+      propertyPath: Speed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8617935779276114895, guid: 5c8efe866a346664eac5d218f5568228, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.950001
@@ -1359,6 +1363,10 @@ PrefabInstance:
     - target: {fileID: 8076000398967352352, guid: 5c8efe866a346664eac5d218f5568228, type: 3}
       propertyPath: Power
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 8076000398967352352, guid: 5c8efe866a346664eac5d218f5568228, type: 3}
+      propertyPath: Speed
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8617935779276114895, guid: 5c8efe866a346664eac5d218f5568228, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1709,6 +1717,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 294930568011891110, guid: 5c8efe866a346664eac5d218f5568228, type: 3}
+      propertyPath: m_Constraints
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 343344617190631866, guid: 5c8efe866a346664eac5d218f5568228, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -1719,7 +1731,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8076000398967352352, guid: 5c8efe866a346664eac5d218f5568228, type: 3}
       propertyPath: Speed
-      value: 0.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8076000398967352352, guid: 5c8efe866a346664eac5d218f5568228, type: 3}
       propertyPath: Power
@@ -1940,6 +1952,10 @@ PrefabInstance:
     - target: {fileID: 8076000398967352352, guid: 5c8efe866a346664eac5d218f5568228, type: 3}
       propertyPath: Power
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 8076000398967352352, guid: 5c8efe866a346664eac5d218f5568228, type: 3}
+      propertyPath: Speed
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8076000398967352355, guid: 5c8efe866a346664eac5d218f5568228, type: 3}
       propertyPath: _teamId
@@ -2240,6 +2256,10 @@ PrefabInstance:
     - target: {fileID: 8076000398967352352, guid: 5c8efe866a346664eac5d218f5568228, type: 3}
       propertyPath: Power
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 8076000398967352352, guid: 5c8efe866a346664eac5d218f5568228, type: 3}
+      propertyPath: Speed
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8617935779276114895, guid: 5c8efe866a346664eac5d218f5568228, type: 3}
       propertyPath: m_LocalPosition.x

@@ -9,6 +9,7 @@ namespace Diamond.SkeletonDefense.Character
     /// バトルフェーズで動きキャラクターの基底クラス
     /// </summary>
     [RequireComponent(typeof(CharacterStatus))]
+    [RequireComponent(typeof(Rigidbody))]
     public abstract class CharacterBase : MonoBehaviour
     {
         /// <summary>
@@ -20,6 +21,11 @@ namespace Diamond.SkeletonDefense.Character
         /// キャラクターのステータス
         /// </summary>
         public CharacterStatus CharacterStatus { set; get; }
+
+        /// <summary>
+        /// リジッドボディ
+        /// </summary>
+        protected Rigidbody Rigidbody { set; get; }
 
         /// <summary>
         /// チームID

@@ -41,6 +41,8 @@ namespace Diamond.SkeletonDefense.Character
         protected virtual void Start()
         {
             this.CharacterStatus = GetComponent<CharacterStatus>();
+            this.Rigidbody = GetComponent<Rigidbody>();
+            this.Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
             _enemies = FindObjectsOfType<CharacterBase>().Where(characterBase => characterBase.TeamId != this.TeamId).ToList();
         }
 
@@ -131,7 +133,7 @@ namespace Diamond.SkeletonDefense.Character
             }
 
             transform.LookAt(_targetEnemy.transform.position);
-            transform.position += transform.forward * this.CharacterStatus.Speed;
+            this.Rigidbody.velocity = transform.forward * this.CharacterStatus.Speed;
         }
 
         protected override IEnumerator AttackCoroutine()
