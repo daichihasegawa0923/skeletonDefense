@@ -23,11 +23,6 @@ namespace Diamond.SkeletonDefense.Character
         public override string TeamId => this._teamId;
 
         /// <summary>
-        /// 攻撃対象の敵
-        /// </summary>
-        protected CharacterBase _targetEnemy;
-
-        /// <summary>
         /// 敵を認識するためのリスト
         /// </summary>
         [SerializeField]
@@ -51,9 +46,8 @@ namespace Diamond.SkeletonDefense.Character
             this.ActByBehaviour();
         }
 
-        public override void Attack()
+        public override void AttackAttribute()
         {
-
             if(_targetEnemy == null || this.IsDead())
             {
                 StopCoroutine("AttackCoroutine");
@@ -102,7 +96,7 @@ namespace Diamond.SkeletonDefense.Character
 
                     break;
                 case CharacterBehaviour.Attack:
-                    this.Attack();
+                    this.AttackAttribute();
                     break;
                 case CharacterBehaviour.Dead:
                     this.Dead();
@@ -126,7 +120,7 @@ namespace Diamond.SkeletonDefense.Character
                 return;
             }
 
-            if (Vector3.Distance(transform.position, _targetEnemy.transform.position) <= this.CharacterStatus.DistanseBetweenEnemy)
+            if (this.IsNearEnemy())
             {
                 this.ChangeBehaviour(CharacterBehaviour.Attack);
                 return;
@@ -140,7 +134,7 @@ namespace Diamond.SkeletonDefense.Character
         {
             while(true)
             {
-                _targetEnemy.Damaged(this.CharacterStatus.Power);
+                this.Attack();
                 yield return new WaitForSeconds(this.CharacterStatus.FrequenceOfAttack);
             }
         }
@@ -183,6 +177,16 @@ namespace Diamond.SkeletonDefense.Character
             }
 
             this.CharacterBehaviour = characterBehaviour;
+        }
+
+        public override void Attack()
+        {
+            if(this.IsNearEnemy())
+            {
+                this._animator.SetTrigger(NormalCharacter.ATTACK_ANIMATION_TRIGGER);
+                this._animator.SetTrigger(NormalCharacter.STAY_ANIMATION_TRIGGER);
+                _targetEnemy.Damaged(this.CharacterStatus.Power);
+            }
         }
     }
 }

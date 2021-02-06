@@ -13,6 +13,11 @@ namespace Diamond.SkeletonDefense.Character
     public abstract class CharacterBase : MonoBehaviour
     {
         /// <summary>
+        /// 攻撃対象の敵
+        /// </summary>
+        protected CharacterBase _targetEnemy;
+
+        /// <summary>
         /// キャラクターの状態
         /// </summary>
         public CharacterBehaviour CharacterBehaviour { set; get; }
@@ -41,6 +46,11 @@ namespace Diamond.SkeletonDefense.Character
         /// 待機中
         /// </summary>
         protected abstract void Stay();
+
+        /// <summary>
+        /// 攻撃中の挙動
+        /// </summary>
+        public abstract void AttackAttribute();
 
         /// <summary>
         /// 攻撃
@@ -85,9 +95,31 @@ namespace Diamond.SkeletonDefense.Character
         /// <param name="characterBehaviour"></param>
         public abstract void ChangeBehaviour(CharacterBehaviour characterBehaviour);
 
-        public static implicit operator CharacterBase(GameObject v)
+        /// <summary>
+        /// 接敵しているかの判定
+        /// </summary>
+        /// <returns>true:接敵している,false:接敵していない</returns>
+        protected virtual bool IsNearEnemy()
         {
-            throw new NotImplementedException();
+            if (_targetEnemy == null)
+                return false;
+
+            RaycastHit raycastHit;
+            Physics.BoxCast(
+                transform.position,
+                Vector3.one / 2,
+                transform.forward,
+                out raycastHit,
+                Quaternion.identity,
+                this.CharacterStatus.DistanseBetweenEnemy);
+
+            if(raycastHit.collider != null && raycastHit.collider.gameObject.GetComponent<CharacterBase>() != null)
+            {
+                var chara = raycastHit.collider.gameObject.GetComponent<CharacterBase>();
+                return chara == _targetEnemy;
+            }
+
+            return false;
         }
     }
 

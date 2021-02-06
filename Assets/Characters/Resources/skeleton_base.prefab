@@ -1711,6 +1711,7 @@ MonoBehaviour:
   Defense: 4
   DistanseBetweenEnemy: 2
   FrequenceOfAttack: 2
+  cost: 10
 --- !u!54 &294930568011891110
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1828,15 +1829,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2551ae3255ada5c47913257c922f8ccf, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.008249341
+      value: 0.005
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2551ae3255ada5c47913257c922f8ccf, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.008249344
+      value: 0.005
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2551ae3255ada5c47913257c922f8ccf, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.008249344
+      value: 0.005
       objectReference: {fileID: 0}
     - target: {fileID: -7635826562936255635, guid: 2551ae3255ada5c47913257c922f8ccf, type: 3}
       propertyPath: m_Materials.Array.data[0]

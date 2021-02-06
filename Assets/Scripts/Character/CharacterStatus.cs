@@ -35,5 +35,10 @@ namespace Diamond.SkeletonDefense.Character
         /// 攻撃頻度（低いほど攻撃頻度が高くなる）
         /// </summary>
         public float FrequenceOfAttack;
+
+        /// <summary>
+        /// コスト
+        /// </summary>
+        public int cost;
     }
 }
