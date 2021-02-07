@@ -122,7 +122,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 08fb184539a9c5142aac5ca11b3a29d7, type: 2}
+  m_Motion: {fileID: -251351218608039746, guid: 55fdca931c7a6b44a912d43c7c9f288d, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -134,7 +134,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: NomarlCharacter
+  m_Name: Biking
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: IsAttacking
@@ -268,7 +268,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: cf909aca9e3e6624ea0fbfe941e1e795, type: 2}
+  m_Motion: {fileID: -4799524434163024911, guid: 3263f151ffdfdfe4d918e234591d612d, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -296,7 +296,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 76313b33fa1b8594c8c1c39fe68c2c9d, type: 2}
+  m_Motion: {fileID: 7560771317261827551, guid: 55fdca931c7a6b44a912d43c7c9f288d, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
