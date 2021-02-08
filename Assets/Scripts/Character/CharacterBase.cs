@@ -108,7 +108,7 @@ namespace Diamond.SkeletonDefense.Character
             Physics.BoxCast(
                 transform.position,
                 Vector3.one / 2,
-                transform.forward,
+                _targetEnemy.transform.position - transform.position,
                 out raycastHit,
                 Quaternion.identity,
                 this.CharacterStatus.DistanseBetweenEnemy);
