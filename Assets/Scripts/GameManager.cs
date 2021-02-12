@@ -43,7 +43,7 @@ namespace Diamond.SkeletonDefense
         ///  プレイヤー側のキャラクターたち
         /// </summary>
         [SerializeField]
-        private List<CharacterBase> _playerCharacterBases;
+        private List<CharacterBase> _playerCharacterBases = new List<CharacterBase>();
 
         private void Awake()
         {
@@ -55,21 +55,32 @@ namespace Diamond.SkeletonDefense
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        private void CheckPlayerCharacterBases(object sender, EventArgs args)
+        private void AddPlayerCharacter(object sender, EventArgs args)
         {
-            _playerCharacterBases.Clear();
-            var list = FindObjectsOfType<CharacterBase>().Where(cb => cb.TeamId == this._playerTeamId).ToList();
-            if (list.Count() == 0)
+            var character = sender as CharacterBase;
+            if (character == null)
                 return;
 
-            _playerCharacterBases = list;
+            _playerCharacterBases.Add(character);
+        }
+
+        private void DeletePlayerCharacter(object sender,EventArgs args)
+        {
+            var character = sender as CharacterBase;
+            if (character == null)
+                return;
+            if (_playerCharacterBases.Count == 0)
+                return;
+
+            _playerCharacterBases.Remove(character);
         }
 
         // Start is called before the first frame update
         void Start()
         {
             _fingerControlManager.SetTeamId = this._playerTeamId;
-            _fingerControlManager.ClickHandler += new EventHandler(this.CheckPlayerCharacterBases);
+            _fingerControlManager.ClickAddHandler += new EventHandler(this.AddPlayerCharacter);
+            _fingerControlManager.ClickDeleteHandler += new EventHandler(this.DeletePlayerCharacter);
         }
 
         // Update is called once per frame

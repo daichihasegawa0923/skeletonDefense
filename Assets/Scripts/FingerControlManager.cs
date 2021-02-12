@@ -67,9 +67,14 @@ namespace Diamond.SkeletonDefense
         private float _cameraZMax = 25;
 
         /// <summary>
-        ///  画面タップ時のイベントハンドラ
+        ///  キャラクター追加時のイベントハンドラ
         /// </summary>
-        public EventHandler ClickHandler;
+        public EventHandler ClickAddHandler;
+
+        /// <summary>
+        ///  キャラクター削除時のイベントハンドラ
+        /// </summary>
+        public EventHandler ClickDeleteHandler;
 
         // Update is called once per frame
         void Update()
@@ -91,9 +96,6 @@ namespace Diamond.SkeletonDefense
                 {
                     InstantiateCharater();
                     DeleteCharacter();
-
-                    if (ClickHandler != null)
-                        ClickHandler(this, EventArgs.Empty);
                 }
 
                 _fingerPutTime = 0;
@@ -134,6 +136,7 @@ namespace Diamond.SkeletonDefense
                 return;
 
             Destroy(characterBase.gameObject);
+            ClickDeleteHandler(characterBase, EventArgs.Empty);
         }
 
         /// <summary>
@@ -148,6 +151,7 @@ namespace Diamond.SkeletonDefense
 
             var chara = Instantiate(_putCharacter);
             chara.transform.position = position;
+            ClickAddHandler(chara, EventArgs.Empty);
         }
 
         public void MoveCameraBySlide()
