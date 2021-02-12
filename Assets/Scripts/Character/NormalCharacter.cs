@@ -38,11 +38,17 @@ namespace Diamond.SkeletonDefense.Character
             this.CharacterStatus = GetComponent<CharacterStatus>();
             this.Rigidbody = GetComponent<Rigidbody>();
             this.Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
-            _enemies = FindObjectsOfType<CharacterBase>().Where(characterBase => characterBase.TeamId != this.TeamId).ToList();
+            _enemies = FindObjectsOfType<CharacterBase>().OrderBy(en => Vector3.Distance(en.transform.position, transform.position)).Where(characterBase => characterBase.TeamId != this.TeamId).ToList();
+
+            if(_enemies != null && _enemies.Count() != 0)
+            {
+                transform.LookAt(_enemies[0].transform.position);
+            }
         }
 
         protected virtual void Update()
         {
+            this.Rigidbody.angularVelocity = Vector3.zero;
             this.ActByBehaviour();
         }
 
