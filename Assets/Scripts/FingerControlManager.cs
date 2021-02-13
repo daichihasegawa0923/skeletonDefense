@@ -16,6 +16,8 @@ namespace Diamond.SkeletonDefense
         /// </summary>
         public readonly static string _canPutCharacterPositionTagName = "CharacterPutable";
 
+        public string SetTeamId { set; get; } = "1";
+
         /// <summary>
         /// 指を置いている時間
         /// </summary>
@@ -64,6 +66,16 @@ namespace Diamond.SkeletonDefense
         [SerializeField]
         private float _cameraZMax = 25;
 
+        /// <summary>
+        ///  キャラクター追加時のイベントハンドラ
+        /// </summary>
+        public EventHandler ClickAddHandler;
+
+        /// <summary>
+        ///  キャラクター削除時のイベントハンドラ
+        /// </summary>
+        public EventHandler ClickDeleteHandler;
+
         // Update is called once per frame
         void Update()
         {
@@ -81,7 +93,10 @@ namespace Diamond.SkeletonDefense
             {
                 _isFingerPut = false;
                 if (IsTap)
+                {
                     InstantiateCharater();
+                    DeleteCharacter();
+                }
 
                 _fingerPutTime = 0;
             }
@@ -93,24 +108,55 @@ namespace Diamond.SkeletonDefense
                 MoveCameraBySlide();
         }
 
+        private GameObject RaycastAndGetObject(out Vector3 position)
+        {
+            position = Vector3.zero;
+            var mainCamera = Camera.main;
+            RaycastHit raycastHit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            var rayCast = Physics.Raycast(ray, out raycastHit);
+
+            if (raycastHit.collider == null)
+                return null;
+
+            position = raycastHit.point;
+            return raycastHit.collider.gameObject;
+        }
+
+        public void DeleteCharacter()
+        {
+            var obj = RaycastAndGetObject(out var position);
+
+            if (obj == null)
+                return;
+
+            var characterBase = obj.GetComponent<CharacterBase>();
+
+            if (characterBase == null || characterBase.TeamId != SetTeamId)
+                return;
+
+            Destroy(characterBase.gameObject);
+            ClickDeleteHandler(characterBase, EventArgs.Empty);
+        }
+
         /// <summary>
         /// キャラクターを配置します。
         /// </summary>
         public void InstantiateCharater()
         {
-            var mainCamera = Camera.main;
-            RaycastHit raycastHit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            var rayCast = Physics.Raycast(ray,out raycastHit);
+            var obj = RaycastAndGetObject(out var position);
 
-            if (raycastHit.collider == null ||
-                raycastHit.collider.gameObject.tag != FingerControlManager._canPutCharacterPositionTagName
-                || this._putCharacter == null)
+            if (obj == null || obj.tag != FingerControlManager._canPutCharacterPositionTagName)
                 return;
 
-            var position = raycastHit.point;
+            var charaName = _putCharacter.name;
             var chara = Instantiate(_putCharacter);
             chara.transform.position = position;
+
+            var pc = new GameObject("playerSetInfo");
+            var info = pc.AddComponent<SetPlayerCharacterInfo>();
+            info.SetPlayerCharacterInfoParams(chara, charaName, chara.transform.position);
+            ClickAddHandler(info, EventArgs.Empty);
         }
 
         public void MoveCameraBySlide()
