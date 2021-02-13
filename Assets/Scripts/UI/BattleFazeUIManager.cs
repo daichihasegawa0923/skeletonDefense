@@ -19,6 +19,11 @@ public class BattleFazeUIManager : MonoBehaviour
         this.ActiveOneCanvas("PrepareUI");
     }
 
+    public void SetPrepareUI()
+    {
+        this.ActiveOneCanvas("PrepareUI");
+    }
+
     public void SetBattleUI()
     {
         this.ActiveOneCanvas("BattleUI");

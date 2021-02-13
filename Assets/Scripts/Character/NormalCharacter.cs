@@ -20,7 +20,7 @@ namespace Diamond.SkeletonDefense.Character
         [SerializeField]
         protected Animator _animator;
 
-        public override string TeamId => this._teamId;
+        public override string TeamId => this._teamId; 
 
         /// <summary>
         /// 敵を認識するためのリスト

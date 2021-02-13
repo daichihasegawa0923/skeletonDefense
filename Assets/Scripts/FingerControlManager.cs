@@ -149,9 +149,14 @@ namespace Diamond.SkeletonDefense
             if (obj == null || obj.tag != FingerControlManager._canPutCharacterPositionTagName)
                 return;
 
+            var charaName = _putCharacter.name;
             var chara = Instantiate(_putCharacter);
             chara.transform.position = position;
-            ClickAddHandler(chara, EventArgs.Empty);
+
+            var pc = new GameObject("playerSetInfo");
+            var info = pc.AddComponent<SetPlayerCharacterInfo>();
+            info.SetPlayerCharacterInfoParams(chara, charaName, chara.transform.position);
+            ClickAddHandler(info, EventArgs.Empty);
         }
 
         public void MoveCameraBySlide()

@@ -42,12 +42,17 @@ namespace Diamond.SkeletonDefense
         /// <summary>
         ///  プレイヤー側のキャラクターたち
         /// </summary>
+        private List<SetPlayerCharacterInfo> _setPlayerCharacterInfos = new List<SetPlayerCharacterInfo>();
+
+        /// <summary>
+        ///  敵の配置情報
+        /// </summary>
         [SerializeField]
-        private List<CharacterBase> _playerCharacterBases = new List<CharacterBase>();
+        private List<SetEnemyInfo> _setEnemyInfos = new List<SetEnemyInfo>();
 
         private void Awake()
         {
-            GameManager.GameFaze = GameFaze.PrepareForFighting;
+            ChangeGameFaze(GameFaze.PrepareForFighting);
         }
 
         /// <summary>
@@ -57,11 +62,12 @@ namespace Diamond.SkeletonDefense
         /// <param name="args"></param>
         private void AddPlayerCharacter(object sender, EventArgs args)
         {
-            var character = sender as CharacterBase;
-            if (character == null)
+            var charaInfo = sender as SetPlayerCharacterInfo;
+            if (charaInfo == null)
                 return;
 
-            _playerCharacterBases.Add(character);
+            _setPlayerCharacterInfos.Add(charaInfo);
+            charaInfo.transform.parent = transform;
         }
 
         private void DeletePlayerCharacter(object sender,EventArgs args)
@@ -69,10 +75,17 @@ namespace Diamond.SkeletonDefense
             var character = sender as CharacterBase;
             if (character == null)
                 return;
-            if (_playerCharacterBases.Count == 0)
+            if (_setPlayerCharacterInfos.Count() == 0)
                 return;
 
-            _playerCharacterBases.Remove(character);
+            var deleteCharaInfo = _setPlayerCharacterInfos.Where(ci => ci.CharacterBase == character).ToList();
+
+            if (deleteCharaInfo.Count() == 0)
+                return;
+
+            Destroy(deleteCharaInfo[0].CharacterBase.gameObject);
+            _setPlayerCharacterInfos.Remove(deleteCharaInfo[0]);
+            Destroy(deleteCharaInfo[0].gameObject);
         }
 
         // Start is called before the first frame update
@@ -111,33 +124,88 @@ namespace Diamond.SkeletonDefense
         }
 
         /// <summary>
+        /// プレイヤーが設定したキャラクターをクリアする
+        /// </summary>
+        public void Clear()
+        {
+            this._setPlayerCharacterInfos.ForEach(info =>
+            {
+                Destroy(info.CharacterBase.gameObject);
+                Destroy(info.gameObject);
+            });
+
+            this._setPlayerCharacterInfos.Clear();
+        }
+
+        /// <summary>
         /// 配置するキャラクターを決定する
         /// </summary>
         /// <param name="characterBase">配置するキャラクター</param>
         public void SetPutCharacter(CharacterBase characterBase)
         {
             _fingerControlManager.PutCharacter = characterBase;
+
         }
 
         public void GameStart()
         {
+            ChangeGameFaze(GameFaze.InBattle);
             _characterBases = FindObjectsOfType<CharacterBase>().ToList();
             _characterBases.ForEach(c => c.ChangeBehaviour(CharacterBehaviour.Move));
             GameFaze = GameFaze.InBattle;
             _battleFazeUIManager.SetBattleUI();
         }
-        
+
+        public void ResetEnemySet()
+        {
+            foreach(var ene in _setEnemyInfos)
+            {
+                ene.DeleteEnemy();
+                ene.SetEnemy();
+            }
+        }
+
+        public void ResetPlayerSet()
+        {
+            foreach(var pc in _setPlayerCharacterInfos)
+            {
+                pc.Reset();
+            }
+        }
+
+         /// <summary>
+         /// 準備中に戻す、ボタンから呼び出す想定
+         /// </summary>
+        public void RePrepareGame()
+        {
+            this.ChangeGameFaze(GameFaze.PrepareForFighting);
+        }
+
+        /// <summary>
+        /// ゲームのフェーズを変える
+        /// </summary>
+        /// <param name="gameFaze"></param>
         public void ChangeGameFaze(GameFaze gameFaze)
         {
             switch(gameFaze)
             {
                 case GameFaze.PrepareForFighting:
+                    _fingerControlManager.enabled = true;
+                    _battleFazeUIManager.SetPrepareUI();
+                    ResetEnemySet();
+                    ResetPlayerSet();
                     break;
+
                 case GameFaze.InBattle:
+                    _fingerControlManager.enabled = false;
                     break;
+
                 case GameFaze.Result:
+                    _fingerControlManager.enabled = false;
                     break;
             }
+
+            GameManager.GameFaze = gameFaze;
         }
     }
 
