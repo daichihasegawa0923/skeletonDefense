@@ -76,6 +76,11 @@ namespace Diamond.SkeletonDefense
         /// </summary>
         public EventHandler ClickDeleteHandler;
 
+        /// <summary>
+        /// Player can put or delete characters??
+        /// </summary>
+        public bool CanEditPlayerCharacter { set; get; } = true;
+
         // Update is called once per frame
         void Update()
         {
@@ -92,7 +97,7 @@ namespace Diamond.SkeletonDefense
             if(Input.GetMouseButtonUp(0))
             {
                 _isFingerPut = false;
-                if (IsTap)
+                if (IsTap && CanEditPlayerCharacter)
                 {
                     InstantiateCharater();
                     DeleteCharacter();

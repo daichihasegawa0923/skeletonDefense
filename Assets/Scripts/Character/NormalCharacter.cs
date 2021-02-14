@@ -35,6 +35,11 @@ namespace Diamond.SkeletonDefense.Character
 
         protected virtual void Start()
         {
+            ChangeBehaviour(CharacterBehaviour.Stay);
+
+            // アニメーションのtriggerを外す
+            this._animator.ResetTrigger(NormalCharacter.STAY_ANIMATION_TRIGGER);
+
             this.CharacterStatus = GetComponent<CharacterStatus>();
             this.Rigidbody = GetComponent<Rigidbody>();
             this.Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;

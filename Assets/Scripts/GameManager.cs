@@ -45,6 +45,31 @@ namespace Diamond.SkeletonDefense
         private List<SetPlayerCharacterInfo> _setPlayerCharacterInfos = new List<SetPlayerCharacterInfo>();
 
         /// <summary>
+        /// 制限コスト
+        /// </summary>
+        [SerializeField]
+        private int _maxCost = 10;
+
+        /// <summary>
+        ///  現在配置されているキャラクターの総コスト
+        /// </summary>
+        public int CurrentCost
+        { get
+            {
+                var cost = 0;
+                foreach(var info in _setPlayerCharacterInfos)
+                {
+                    if(info != null
+                        && info.CharacterBase != null
+                        && info.CharacterBase.CharacterStatus != null)
+                        cost += info.CharacterBase.CharacterStatus.cost;
+                }
+                Debug.Log(cost);
+                return cost;
+            }
+        }
+
+        /// <summary>
         ///  敵の配置情報
         /// </summary>
         [SerializeField]
@@ -68,6 +93,16 @@ namespace Diamond.SkeletonDefense
 
             _setPlayerCharacterInfos.Add(charaInfo);
             charaInfo.transform.parent = transform;
+
+            // 
+            if(CurrentCost > _maxCost)
+            {
+                _setPlayerCharacterInfos.Remove(charaInfo);
+                Destroy(charaInfo.CharacterBase.gameObject);
+                Destroy(charaInfo.gameObject);
+            }
+
+            this._battleFazeUIManager.SetCurrentCostCountText(CurrentCost);
         }
 
         private void DeletePlayerCharacter(object sender,EventArgs args)
@@ -86,6 +121,8 @@ namespace Diamond.SkeletonDefense
             Destroy(deleteCharaInfo[0].CharacterBase.gameObject);
             _setPlayerCharacterInfos.Remove(deleteCharaInfo[0]);
             Destroy(deleteCharaInfo[0].gameObject);
+
+            this._battleFazeUIManager.SetCurrentCostCountText(CurrentCost);
         }
 
         // Start is called before the first frame update
@@ -94,6 +131,7 @@ namespace Diamond.SkeletonDefense
             _fingerControlManager.SetTeamId = this._playerTeamId;
             _fingerControlManager.ClickAddHandler += new EventHandler(this.AddPlayerCharacter);
             _fingerControlManager.ClickDeleteHandler += new EventHandler(this.DeletePlayerCharacter);
+            _battleFazeUIManager.SetMaxCostCountText(this._maxCost);
         }
 
         // Update is called once per frame
@@ -135,6 +173,7 @@ namespace Diamond.SkeletonDefense
             });
 
             this._setPlayerCharacterInfos.Clear();
+            this._battleFazeUIManager.SetCurrentCostCountText(CurrentCost);
         }
 
         /// <summary>
@@ -190,18 +229,18 @@ namespace Diamond.SkeletonDefense
             switch(gameFaze)
             {
                 case GameFaze.PrepareForFighting:
-                    _fingerControlManager.enabled = true;
+                    _fingerControlManager.CanEditPlayerCharacter = true;
                     _battleFazeUIManager.SetPrepareUI();
                     ResetEnemySet();
                     ResetPlayerSet();
                     break;
 
                 case GameFaze.InBattle:
-                    _fingerControlManager.enabled = false;
+                    _fingerControlManager.CanEditPlayerCharacter= false;
                     break;
 
                 case GameFaze.Result:
-                    _fingerControlManager.enabled = false;
+                    _fingerControlManager.CanEditPlayerCharacter = false;
                     break;
             }
 

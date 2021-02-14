@@ -1,11 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BattleFazeUIManager : MonoBehaviour
 {
     [SerializeField]
     private List<GameObject> _ChildUIs = new List<GameObject>();
+
+    [SerializeField]
+    private TextMeshProUGUI _maxCountText;
+
+    [SerializeField]
+    private TextMeshProUGUI _currentCountText;
 
     private void Start()
     {
@@ -39,5 +47,22 @@ public class BattleFazeUIManager : MonoBehaviour
         {
             _ChildUIs.ForEach(ui => ui.SetActive(ui.name == name));
         }
+    }
+
+    /// <summary>
+    /// Set max cost count (called by game manager)
+    /// </summary>
+    public void SetMaxCostCountText(int maxCost)
+    {
+        _maxCountText.text = maxCost.ToString();
+    }
+
+    /// <summary>
+    /// Set current cost count(called by game manager)
+    /// </summary>
+    /// <param name="currentCost"></param>
+    public void SetCurrentCostCountText(int currentCost)
+    {
+        _currentCountText.text = currentCost.ToString();
     }
 }

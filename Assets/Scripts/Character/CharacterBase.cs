@@ -18,6 +18,12 @@ namespace Diamond.SkeletonDefense.Character
         protected CharacterBase _targetEnemy;
 
         /// <summary>
+        /// Status of character
+        /// </summary>
+        [SerializeField]
+        protected CharacterStatus _characterStatus;
+
+        /// <summary>
         /// キャラクターの状態
         /// </summary>
         public CharacterBehaviour CharacterBehaviour { set; get; }
@@ -25,7 +31,7 @@ namespace Diamond.SkeletonDefense.Character
         /// <summary>
         /// キャラクターのステータス
         /// </summary>
-        public CharacterStatus CharacterStatus { set; get; }
+        public virtual CharacterStatus CharacterStatus { set => this._characterStatus = value; get => this._characterStatus; }
 
         /// <summary>
         /// リジッドボディ
