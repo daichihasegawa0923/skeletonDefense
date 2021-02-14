@@ -110,22 +110,29 @@ namespace Diamond.SkeletonDefense.Character
             if (_targetEnemy == null)
                 return false;
 
-            RaycastHit raycastHit;
-            Physics.BoxCast(
-                transform.position,
-                Vector3.one / 2,
-                _targetEnemy.transform.position - transform.position,
-                out raycastHit,
-                Quaternion.identity,
-                this.CharacterStatus.DistanseBetweenEnemy);
+            var casts = Physics.BoxCastAll(transform.position, Vector3.one / 2, _targetEnemy.transform.position - transform.position,Quaternion.identity,this._characterStatus.DistanseBetweenEnemy);
 
-            if(raycastHit.collider != null && raycastHit.collider.gameObject.GetComponent<CharacterBase>() != null)
+            foreach (var cast in casts)
             {
-                var chara = raycastHit.collider.gameObject.GetComponent<CharacterBase>();
-                return chara == _targetEnemy;
+                var chara = cast.collider.gameObject.GetComponent<CharacterBase>();
+                if (chara == _targetEnemy)
+                    return true;
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// execute per frame
+        /// </summary>
+        protected virtual void Update()
+        {
+            var spin = transform.eulerAngles;
+            spin.x = 0;
+            spin.z = 0;
+            transform.eulerAngles = spin;
+            if (this.transform.position.y < -50)
+                this.Dead();
         }
     }
 

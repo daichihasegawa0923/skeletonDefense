@@ -51,10 +51,12 @@ namespace Diamond.SkeletonDefense.Character
             }
         }
 
-        protected virtual void Update()
+        override protected void Update()
         {
             this.Rigidbody.angularVelocity = Vector3.zero;
             this.ActByBehaviour();
+
+            base.Update();
         }
 
         public override void AttackAttribute()
@@ -138,7 +140,9 @@ namespace Diamond.SkeletonDefense.Character
             }
 
             transform.LookAt(_targetEnemy.transform.position);
-            this.Rigidbody.velocity = transform.forward * this.CharacterStatus.Speed;
+            var velocity = transform.forward * this.CharacterStatus.Speed;
+            velocity.y = this.Rigidbody.velocity.y;
+            this.Rigidbody.velocity = velocity;
         }
 
         protected override IEnumerator AttackCoroutine()

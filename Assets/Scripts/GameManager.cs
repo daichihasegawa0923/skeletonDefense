@@ -5,6 +5,8 @@ using System.Linq;
 using UnityEngine;
 using Diamond.SkeletonDefense.Data;
 using System;
+using UnityEngine.SceneManagement;
+using Diamond.SkeletonDefense.UI;
 
 namespace Diamond.SkeletonDefense
 {
@@ -51,6 +53,12 @@ namespace Diamond.SkeletonDefense
         private int _maxCost = 10;
 
         /// <summary>
+        /// クリアするとリリースされるキャラクター
+        /// </summary>
+        [SerializeField]
+        private CharacterBase _releaseCharacter;
+
+        /// <summary>
         ///  現在配置されているキャラクターの総コスト
         /// </summary>
         public int CurrentCost
@@ -67,6 +75,10 @@ namespace Diamond.SkeletonDefense
                 Debug.Log(cost);
                 return cost;
             }
+        }
+
+        private void FixedUpdate()
+        {
         }
 
         /// <summary>
@@ -137,7 +149,41 @@ namespace Diamond.SkeletonDefense
         // Update is called once per frame
         void Update()
         {
+            switch(GameManager.GameFaze)
+            {
+                case GameFaze.PrepareForFighting:
+                    break;
+                case GameFaze.InBattle:
 
+                    if (this.IsGameEnd())
+                    {
+                        if (this.IsPlayerWin())
+                        {
+
+                            if (this._releaseCharacter)
+                            {
+                                var data = SaveData.Load();
+
+                                if (data.ReleasedCharacterNames == null)
+                                    data.ReleasedCharacterNames = new List<string>();
+
+                                if (data.ReleasedCharacterNames.Where(n => n == _releaseCharacter.name).ToList().Count == 0)
+                                    data.ReleasedCharacterNames.Add(this._releaseCharacter.name);
+
+                                SaveData.Save(data);
+                            }
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                    break;
+                case GameFaze.Result:
+                    break;
+                default:
+                    break;
+            }
         }
 
         private bool IsGameEnd()
