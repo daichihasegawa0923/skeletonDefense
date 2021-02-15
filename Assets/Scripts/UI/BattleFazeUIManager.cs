@@ -19,6 +19,9 @@ namespace Diamond.SkeletonDefense.UI
         [SerializeField]
         private TextMeshProUGUI _currentCountText;
 
+        [SerializeField]
+        private GameResultUI _resultUI;
+
         /// <summary>
         /// キャラクターのボタンのリスト
         /// </summary>
@@ -46,9 +49,6 @@ namespace Diamond.SkeletonDefense.UI
             var data = SaveData.Load();
             var clist = data.ReleasedCharacterNames;
 
-            if (clist == null || clist.Count == 0)
-                return;
-
             foreach (var b in _characterButtonList)
             {
                 var preList = clist.Where(c => c == b._putCharacter.name).ToList();
@@ -65,6 +65,17 @@ namespace Diamond.SkeletonDefense.UI
         public void SetBattleUI()
         {
             this.ActiveOneCanvas("BattleUI");
+        }
+
+        public void SetResultUI(bool isWin)
+        {
+            this.ActiveOneCanvas("ResultUI");
+            this._resultUI.gameObject.SetActive(true);
+
+            if (isWin)
+                this._resultUI.ExposeWinnerUI();
+            else
+                this._resultUI.ExposeLoserUI();
         }
 
         /// <summary>

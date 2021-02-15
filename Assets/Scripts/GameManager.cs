@@ -59,6 +59,12 @@ namespace Diamond.SkeletonDefense
         private CharacterBase _releaseCharacter;
 
         /// <summary>
+        /// Places player can put characters
+        /// </summary>
+        [SerializeField]
+        private List<GameObject> _putables;
+
+        /// <summary>
         ///  現在配置されているキャラクターの総コスト
         /// </summary>
         public int CurrentCost
@@ -154,35 +160,41 @@ namespace Diamond.SkeletonDefense
                 case GameFaze.PrepareForFighting:
                     break;
                 case GameFaze.InBattle:
-
-                    if (this.IsGameEnd())
-                    {
-                        if (this.IsPlayerWin())
-                        {
-
-                            if (this._releaseCharacter)
-                            {
-                                var data = SaveData.Load();
-
-                                if (data.ReleasedCharacterNames == null)
-                                    data.ReleasedCharacterNames = new List<string>();
-
-                                if (data.ReleasedCharacterNames.Where(n => n == _releaseCharacter.name).ToList().Count == 0)
-                                    data.ReleasedCharacterNames.Add(this._releaseCharacter.name);
-
-                                SaveData.Save(data);
-                            }
-                        }
-                        else
-                        {
-
-                        }
-                    }
+                    JudgeGameIsEnd();
                     break;
                 case GameFaze.Result:
                     break;
                 default:
                     break;
+            }
+        }
+
+        private void JudgeGameIsEnd()
+        {
+            if (this.IsGameEnd())
+            {
+                if (this.IsPlayerWin())
+                {
+
+                    if (this._releaseCharacter)
+                    {
+                        var data = SaveData.Load();
+
+                        if (data.ReleasedCharacterNames == null)
+                            data.ReleasedCharacterNames = new List<string>();
+
+                        if (data.ReleasedCharacterNames.Where(n => n == _releaseCharacter.name).ToList().Count == 0)
+                            data.ReleasedCharacterNames.Add(this._releaseCharacter.name);
+
+                        SaveData.Save(data);
+                    }
+                }
+                else
+                {
+
+                }
+
+                ChangeGameFaze(GameFaze.Result);
             }
         }
 
@@ -232,13 +244,15 @@ namespace Diamond.SkeletonDefense
 
         }
 
+        /// <summary>
+        ///  start the battle
+        /// </summary>
         public void GameStart()
         {
+            if (this._setPlayerCharacterInfos.Count == 0)
+                return;
+
             ChangeGameFaze(GameFaze.InBattle);
-            _characterBases = FindObjectsOfType<CharacterBase>().ToList();
-            _characterBases.ForEach(c => c.ChangeBehaviour(CharacterBehaviour.Move));
-            GameFaze = GameFaze.InBattle;
-            _battleFazeUIManager.SetBattleUI();
         }
 
         public void ResetEnemySet()
@@ -279,14 +293,21 @@ namespace Diamond.SkeletonDefense
                     _battleFazeUIManager.SetPrepareUI();
                     ResetEnemySet();
                     ResetPlayerSet();
+                    _putables.ForEach(p => p.SetActive(true));
                     break;
 
                 case GameFaze.InBattle:
+                    _characterBases = FindObjectsOfType<CharacterBase>().ToList();
+                    _characterBases.ForEach(c => c.ChangeBehaviour(CharacterBehaviour.Move));
+                    _battleFazeUIManager.SetBattleUI();
                     _fingerControlManager.CanEditPlayerCharacter= false;
+                    _putables.ForEach(p => p.SetActive(false));
                     break;
 
                 case GameFaze.Result:
                     _fingerControlManager.CanEditPlayerCharacter = false;
+                    _putables.ForEach(p => p.SetActive(false));
+                    _battleFazeUIManager.SetResultUI(IsPlayerWin());
                     break;
             }
 

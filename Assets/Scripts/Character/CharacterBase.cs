@@ -24,6 +24,12 @@ namespace Diamond.SkeletonDefense.Character
         protected CharacterStatus _characterStatus;
 
         /// <summary>
+        ///  an effect appear when charater dead
+        /// </summary>
+        [SerializeField]
+        protected ParticleSystem _deadEffect;
+
+        /// <summary>
         /// キャラクターの状態
         /// </summary>
         public CharacterBehaviour CharacterBehaviour { set; get; }

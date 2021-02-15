@@ -161,6 +161,12 @@ namespace Diamond.SkeletonDefense.Character
 
         protected override void Dead()
         {
+            // appear effect when dead
+            var deadEffect = (GameObject)Instantiate(_deadEffect.gameObject);
+            deadEffect.transform.position = transform.position;
+            Destroy(deadEffect, 5.0f);
+
+            // destroy itself
             Destroy(gameObject);
         }
 
@@ -185,7 +191,7 @@ namespace Diamond.SkeletonDefense.Character
                     StartCoroutine("AttackCoroutine");
                     animationSetTriggerAction(NormalCharacter.ATTACK_ANIMATION_TRIGGER);
                     break;
-                case CharacterBehaviour.Dead:
+                case CharacterBehaviour.Dead: 
                     break;
                 default:
                     break;

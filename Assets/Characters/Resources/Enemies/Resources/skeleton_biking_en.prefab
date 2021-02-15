@@ -321,7 +321,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10eeba299a9764afa85be47ec5544607, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characterStatus: {fileID: 0}
+  _characterStatus: {fileID: 103592729275881312}
+  _deadEffect: {fileID: 6964388126146130000, guid: e2104e460e7864ee1bdfa8da35ee1d9a,
+    type: 3}
   _teamId: 2
   _animator: {fileID: 103592729275881317}
   _enemies: []
