@@ -186,6 +186,12 @@ namespace Diamond.SkeletonDefense
                         if (data.ReleasedCharacterNames.Where(n => n == _releaseCharacter.name).ToList().Count == 0)
                             data.ReleasedCharacterNames.Add(this._releaseCharacter.name);
 
+                        if (data.ClearedSceneName == null)
+                            data.ClearedSceneName = new List<string>();
+
+                        if (!data.ClearedSceneName.Contains(SceneManager.GetActiveScene().name))
+                            data.ClearedSceneName.Add(SceneManager.GetActiveScene().name);
+
                         SaveData.Save(data);
                     }
                 }

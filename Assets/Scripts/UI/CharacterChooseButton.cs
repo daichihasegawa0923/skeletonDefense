@@ -1,6 +1,7 @@
 ﻿using Diamond.SkeletonDefense.Character;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +18,9 @@ namespace Diamond.SkeletonDefense.UI
         protected override void Start()
         {
             SetCharacter(_putCharacter);
+            var costText = transform.GetComponentInChildren<TextMeshProUGUI>();
+            costText.text = _putCharacter.CharacterStatus.cost.ToString();
+
         }
 
         /// <summary>
