@@ -59,6 +59,12 @@ namespace Diamond.SkeletonDefense
         private CharacterBase _releaseCharacter;
 
         /// <summary>
+        ///  Scene is released when clear current stage.
+        /// </summary>
+        [SerializeField]
+        private Scene _releaseScene;
+
+        /// <summary>
         /// Places player can put characters
         /// </summary>
         [SerializeField]
@@ -186,11 +192,11 @@ namespace Diamond.SkeletonDefense
                         if (data.ReleasedCharacterNames.Where(n => n == _releaseCharacter.name).ToList().Count == 0)
                             data.ReleasedCharacterNames.Add(this._releaseCharacter.name);
 
-                        if (data.ClearedSceneName == null)
-                            data.ClearedSceneName = new List<string>();
+                        if (data.ReleasedStageNames == null)
+                            data.ReleasedStageNames = new List<string>();
 
-                        if (!data.ClearedSceneName.Contains(SceneManager.GetActiveScene().name))
-                            data.ClearedSceneName.Add(SceneManager.GetActiveScene().name);
+                        if (!data.ReleasedStageNames.Contains(_releaseScene.name))
+                            data.ReleasedStageNames.Add(_releaseScene.name);
 
                         SaveData.Save(data);
                     }

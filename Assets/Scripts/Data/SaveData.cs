@@ -12,7 +12,7 @@ namespace Diamond.SkeletonDefense.Data
         /// <summary>
         /// クリア済みのシーン名
         /// </summary>
-        public List<string> ClearedSceneName = new List<string>();
+        public List<string> ReleasedStageNames = new List<string>();
 
         /// <summary>
         /// 解放済みのキャラクター一覧

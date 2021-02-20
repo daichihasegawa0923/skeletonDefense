@@ -67,6 +67,12 @@ namespace Diamond.SkeletonDefense
         private float _cameraZMax = 25;
 
         /// <summary>
+        /// pivot position of main camera
+        /// </summary>
+        [SerializeField]
+        private Vector3 _firstCameraPosition;
+
+        /// <summary>
         ///  キャラクター追加時のイベントハンドラ
         /// </summary>
         public EventHandler ClickAddHandler;
@@ -80,6 +86,11 @@ namespace Diamond.SkeletonDefense
         /// Player can put or delete characters??
         /// </summary>
         public bool CanEditPlayerCharacter { set; get; } = true;
+
+        private void Start()
+        {
+            this._firstCameraPosition = Camera.main.transform.position;
+        }
 
         // Update is called once per frame
         void Update()
@@ -169,14 +180,16 @@ namespace Diamond.SkeletonDefense
             var moveDistanceX = Input.GetAxis("Mouse X");
             var moveDistanceY = Input.GetAxis("Mouse Y");
 
-            Func<float, float, float> fixPosition = new Func<float, float, float>((value, max) => 
+            // calculate distance camera can move
+            var fixPosition = new Func<float, float ,float, float>((value, pivot ,max) => 
             {
-                if(value > max)
+                if(value > pivot + max)
                 {
-                    return max;
-                }else if(value < -max)
+                    return pivot + max;
+                }
+                else if(value < pivot - max)
                 {
-                    return -max;
+                    return pivot - max;
                 }
                 return value;
             });
@@ -186,8 +199,8 @@ namespace Diamond.SkeletonDefense
             position.x -= moveDistanceX;
             position.z -= moveDistanceY;
 
-            position.x = fixPosition(position.x, _cameraXMax);
-            position.z = fixPosition(position.z, _cameraZMax);
+            position.x = fixPosition(position.x,_firstCameraPosition.x, _cameraXMax);
+            position.z = fixPosition(position.z,_firstCameraPosition.z, _cameraZMax);
             
             Camera.main.transform.position = position;
         }
