@@ -24,6 +24,9 @@ namespace Diamond.SkeletonDefense.UI.Title
         [SerializeField]
         private List<string> _releasedStageName = new List<string>();
 
+        [SerializeField]
+        private SceneLoader _sceneLoader;
+
         private void Start()
         {
             _fightButton.interactable = false;
@@ -62,7 +65,7 @@ namespace Diamond.SkeletonDefense.UI.Title
         public void GoToNextStage()
         {
             if (_nextSceneName != null)
-                SceneManager.LoadScene(_nextSceneName);
+                _sceneLoader.SceneLoad(_nextSceneName);
         }
     }
 }

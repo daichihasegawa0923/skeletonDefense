@@ -11,7 +11,7 @@ namespace Diamond.SkeletonDefense.UI
     public class BattleFazeUIManager : MonoBehaviour
     {
         [SerializeField]
-        private List<GameObject> _ChildUIs = new List<GameObject>();
+        public ActiveCanvasSwitcher _activeCanvasSwitcher;
 
         [SerializeField]
         private TextMeshProUGUI _maxCountText;
@@ -30,14 +30,7 @@ namespace Diamond.SkeletonDefense.UI
 
         private void Start()
         {
-            var children = transform.GetComponentsInChildren<Canvas>();
-            foreach (var child in children)
-            {
-                if (child.gameObject != gameObject)
-                    _ChildUIs.Add(child.gameObject);
-            }
-
-            this.ActiveOneCanvas("PrepareUI");
+            this._activeCanvasSwitcher.Active("PrepareUI");
             this.LoadReleasedCharacter();
         }
 
@@ -59,35 +52,23 @@ namespace Diamond.SkeletonDefense.UI
 
         public void SetPrepareUI()
         {
-            this.ActiveOneCanvas("PrepareUI");
+            this._activeCanvasSwitcher.Active("PrepareUI");
         }
 
         public void SetBattleUI()
         {
-            this.ActiveOneCanvas("BattleUI");
+            this._activeCanvasSwitcher.Active("BattleUI");
         }
 
         public void SetResultUI(bool isWin)
         {
-            this.ActiveOneCanvas("ResultUI");
+            this._activeCanvasSwitcher.Active("ResultUI");
             this._resultUI.gameObject.SetActive(true);
 
             if (isWin)
                 this._resultUI.ExposeWinnerUI();
             else
                 this._resultUI.ExposeLoserUI();
-        }
-
-        /// <summary>
-        /// 指定された名前のオブジェクトのみをアクティブにします。
-        /// </summary>
-        /// <param name="name">オブジェクトの名前</param>
-        public void ActiveOneCanvas(string name)
-        {
-            if (_ChildUIs != null && _ChildUIs.Count != 0)
-            {
-                _ChildUIs.ForEach(ui => ui.SetActive(ui.name == name));
-            }
         }
 
         /// <summary>

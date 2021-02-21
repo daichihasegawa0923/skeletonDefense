@@ -62,13 +62,19 @@ namespace Diamond.SkeletonDefense
         ///  Scene is released when clear current stage.
         /// </summary>
         [SerializeField]
-        private Scene _releaseScene;
+        private string _releaseSceneName;
 
         /// <summary>
         /// Places player can put characters
         /// </summary>
         [SerializeField]
         private List<GameObject> _putables;
+
+        /// <summary>
+        /// Load Scenes Manager
+        /// </summary>
+        [SerializeField]
+        private SceneLoader _sceneLoader;
 
         /// <summary>
         ///  現在配置されているキャラクターの総コスト
@@ -181,25 +187,14 @@ namespace Diamond.SkeletonDefense
             {
                 if (this.IsPlayerWin())
                 {
+                    var data = SaveData.Load();
+                    if(this._releaseCharacter)
+                        data.ReleasedCharacterNames.Add(this._releaseCharacter.name,false);
 
-                    if (this._releaseCharacter)
-                    {
-                        var data = SaveData.Load();
+                    if(!string.IsNullOrWhiteSpace(this._releaseSceneName))
+                        data.ReleasedStageNames.Add(_releaseSceneName,false);
 
-                        if (data.ReleasedCharacterNames == null)
-                            data.ReleasedCharacterNames = new List<string>();
-
-                        if (data.ReleasedCharacterNames.Where(n => n == _releaseCharacter.name).ToList().Count == 0)
-                            data.ReleasedCharacterNames.Add(this._releaseCharacter.name);
-
-                        if (data.ReleasedStageNames == null)
-                            data.ReleasedStageNames = new List<string>();
-
-                        if (!data.ReleasedStageNames.Contains(_releaseScene.name))
-                            data.ReleasedStageNames.Add(_releaseScene.name);
-
-                        SaveData.Save(data);
-                    }
+                    SaveData.Save(data);
                 }
                 else
                 {
@@ -213,6 +208,12 @@ namespace Diamond.SkeletonDefense
         private bool IsGameEnd()
         {
             var characters = FindObjectsOfType<CharacterBase>();
+            if(characters.Length == 0)
+            {
+                ChangeGameFaze(GameFaze.PrepareForFighting);
+                return false;
+            }
+
             var otherId = characters[0].TeamId;
             var playerCharacters = characters.Where(ch => ch.TeamId == otherId);
 
@@ -324,6 +325,19 @@ namespace Diamond.SkeletonDefense
             }
 
             GameManager.GameFaze = gameFaze;
+        }
+
+        public void SceneLoad(string sceneName)
+        {
+            _sceneLoader.SceneLoad(sceneName);
+        }
+
+        public void GoToNextScene()
+        {
+            if (!string.IsNullOrWhiteSpace(this._releaseSceneName))
+                SceneLoad(this._releaseSceneName);
+            else
+                SceneLoad("Title");
         }
     }
 

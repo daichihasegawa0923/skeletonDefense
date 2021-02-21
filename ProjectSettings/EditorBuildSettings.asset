@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Title/Title.unity
     guid: 2d6306ea92098b7449684858f8d8e404
   - enabled: 1
+    path: Assets/Scenes/BattleFaze/BattleFaze_01.unity
+    guid: 8b03e3866a0214c03b85aca91b4165de
+  - enabled: 1
     path: Assets/Scenes/BattleFaze/BattleFaze_02.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}
