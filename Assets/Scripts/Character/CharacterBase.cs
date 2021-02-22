@@ -47,7 +47,7 @@ namespace Diamond.SkeletonDefense.Character
         /// <summary>
         /// チームID
         /// </summary>
-        public virtual string TeamId { get; }
+        public virtual string TeamId { get; set; }
 
         /// <summary>
         /// 攻撃を受けたときの挙動

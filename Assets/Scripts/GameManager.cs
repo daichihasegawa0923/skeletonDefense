@@ -105,6 +105,9 @@ namespace Diamond.SkeletonDefense
         [SerializeField]
         private List<SetEnemyInfo> _setEnemyInfos = new List<SetEnemyInfo>();
 
+        [SerializeField]
+        private string _enemyId = "2";
+
         private void Awake()
         {
             ChangeGameFaze(GameFaze.PrepareForFighting);
@@ -210,8 +213,8 @@ namespace Diamond.SkeletonDefense
             var characters = FindObjectsOfType<CharacterBase>();
             if(characters.Length == 0)
             {
-                ChangeGameFaze(GameFaze.PrepareForFighting);
-                return false;
+                ChangeGameFaze(GameFaze.Result);
+                return true;
             }
 
             var otherId = characters[0].TeamId;
@@ -223,6 +226,10 @@ namespace Diamond.SkeletonDefense
         public bool IsPlayerWin()
         {
             var characters = FindObjectsOfType<CharacterBase>();
+
+            if (characters.Count() == 0)
+                return false;
+
             foreach (var character in characters)
             {
                 if (character.TeamId != this._playerTeamId)
@@ -273,7 +280,7 @@ namespace Diamond.SkeletonDefense
             foreach(var ene in _setEnemyInfos)
             {
                 ene.DeleteEnemy();
-                ene.SetEnemy();
+                ene.SetEnemy(_enemyId);
             }
         }
 

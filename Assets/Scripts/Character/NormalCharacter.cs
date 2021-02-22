@@ -20,7 +20,7 @@ namespace Diamond.SkeletonDefense.Character
         [SerializeField]
         protected Animator _animator;
 
-        public override string TeamId => this._teamId; 
+        public override string TeamId { set { this._teamId = value; } get { return this._teamId; } }
 
         /// <summary>
         /// 敵を認識するためのリスト
@@ -61,7 +61,7 @@ namespace Diamond.SkeletonDefense.Character
 
         public override void AttackAttribute()
         {
-            if(_targetEnemy == null || this.IsDead())
+            if(_targetEnemy == null || this.IsDead() || !IsNearEnemy())
             {
                 StopCoroutine("AttackCoroutine");
                 this.ChangeBehaviour(CharacterBehaviour.Move);

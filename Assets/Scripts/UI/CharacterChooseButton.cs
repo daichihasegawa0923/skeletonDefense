@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace Diamond.SkeletonDefense.UI 
 {
-    public class CharacterChooseButton : Button
+    public class CharacterChooseButton : MonoBehaviour
     {
         [SerializeField]
         public CharacterBase _putCharacter;
@@ -15,12 +15,14 @@ namespace Diamond.SkeletonDefense.UI
         [SerializeField]
         public GameManager _gameManager;
 
-        protected override void Start()
+        [SerializeField]
+        public Button _button;
+
+        protected void Start()
         {
             SetCharacter(_putCharacter);
             var costText = transform.GetComponentInChildren<TextMeshProUGUI>();
             costText.text = _putCharacter.CharacterStatus.cost.ToString();
-
         }
 
         /// <summary>
@@ -39,8 +41,8 @@ namespace Diamond.SkeletonDefense.UI
         public void SetCharacter(CharacterBase characterBase)
         {
             _putCharacter = characterBase;
-            onClick.RemoveAllListeners();
-            onClick.AddListener(() => { _gameManager.SetPutCharacter(_putCharacter);});
+            _button.onClick.RemoveAllListeners();
+            _button.onClick.AddListener(() => { _gameManager.SetPutCharacter(_putCharacter);});
         }
     }
 }

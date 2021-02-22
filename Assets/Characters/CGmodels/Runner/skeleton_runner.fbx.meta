@@ -1,20 +1,20 @@
 fileFormatVersion: 2
-guid: b68fe45e43f19914f9702b6c8e720a5f
+guid: f49f3ae1c843a654882dc218042a4ac9
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable:
   - first:
-      74: 5748630936541996372
-    second: monsterBody|attack
+      74: -251351218608039746
+    second: Armature|attack
   - first:
-      74: 3695912112469598359
-    second: monsterBody|no_motion
+      74: 1622502370704627557
+    second: Armature|no_motion
   - first:
-      74: 3048499212467348289
-    second: monsterBody|stay
+      74: 7560771317261827551
+    second: Armature|stay
   - first:
-      74: 2274154898258435864
-    second: monsterBody|walk
+      74: -4799524434163024911
+    second: Armature|walk
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -44,8 +44,8 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: monsterBody|attack
-      takeName: monsterBody|attack
+      name: Armature|attack
+      takeName: Armature|attack
       internalID: 0
       firstFrame: 0
       lastFrame: 16
@@ -73,8 +73,8 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: monsterBody|no_motion
-      takeName: monsterBody|no_motion
+      name: Armature|no_motion
+      takeName: Armature|no_motion
       internalID: 0
       firstFrame: 0
       lastFrame: 1
@@ -102,8 +102,8 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: monsterBody|stay
-      takeName: monsterBody|stay
+      name: Armature|stay
+      takeName: Armature|stay
       internalID: 0
       firstFrame: 0
       lastFrame: 60
@@ -131,8 +131,8 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: monsterBody|walk
-      takeName: monsterBody|walk
+      name: Armature|walk
+      takeName: Armature|walk
       internalID: 0
       firstFrame: 0
       lastFrame: 30
