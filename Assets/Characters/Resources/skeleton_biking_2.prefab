@@ -277,6 +277,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c828571285440444f9569fec8430667d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _skins:
+  - {fileID: 3923786288855209755}
+  - {fileID: 4607709534832330286}
+  - {fileID: 6642431288227725060}
+  - {fileID: 5456770523371524227}
+  - {fileID: 464888087233590097}
   _characterStatus: {fileID: 37213390480314681}
   _deadEffect: {fileID: 6964388126146130000, guid: e2104e460e7864ee1bdfa8da35ee1d9a,
     type: 3}

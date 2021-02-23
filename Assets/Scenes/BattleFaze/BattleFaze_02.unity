@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f96b4725352d4dbf83d49eafc9ec92a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyClass: {fileID: 103592729275881314, guid: c9a6b0e2c40014338a025a19d4c8ae91,
+  _enemyClass: {fileID: 4149338620457551199, guid: 0d1d895a6cb76e84b8c7ba0eb5ed28a7,
     type: 3}
 --- !u!1 &85716140
 GameObject:
@@ -912,6 +912,7 @@ Light:
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!4 &705507995
@@ -1220,7 +1221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f96b4725352d4dbf83d49eafc9ec92a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyClass: {fileID: 103592729275881314, guid: c9a6b0e2c40014338a025a19d4c8ae91,
+  _enemyClass: {fileID: 4149338620457551199, guid: 0d1d895a6cb76e84b8c7ba0eb5ed28a7,
     type: 3}
 --- !u!1 &1315082921
 GameObject:
@@ -2212,6 +2213,12 @@ PrefabInstance:
       propertyPath: _setEnemyInfos.Array.data[2]
       value: 
       objectReference: {fileID: 1309900563}
+    - target: {fileID: 1004238876493954334, guid: dff6f67ea713a40a1aef1d959a738ad8,
+        type: 3}
+      propertyPath: _enemyClass
+      value: 
+      objectReference: {fileID: 4149338620457551199, guid: 0d1d895a6cb76e84b8c7ba0eb5ed28a7,
+        type: 3}
     - target: {fileID: 4072685289006090977, guid: dff6f67ea713a40a1aef1d959a738ad8,
         type: 3}
       propertyPath: m_IsActive

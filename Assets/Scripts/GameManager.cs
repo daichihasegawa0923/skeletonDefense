@@ -108,6 +108,9 @@ namespace Diamond.SkeletonDefense
         [SerializeField]
         private string _enemyId = "2";
 
+        [SerializeField]
+        private Material _enemyMaterial;
+
         private void Awake()
         {
             ChangeGameFaze(GameFaze.PrepareForFighting);
@@ -280,7 +283,7 @@ namespace Diamond.SkeletonDefense
             foreach(var ene in _setEnemyInfos)
             {
                 ene.DeleteEnemy();
-                ene.SetEnemy(_enemyId);
+                ene.SetEnemy(_enemyId,_enemyMaterial);
             }
         }
 

@@ -17,13 +17,16 @@ namespace Diamond.SkeletonDefense.Character
         /// </summary>
         private CharacterBase _enemyInstance;
 
-        public void SetEnemy(string id)
+        public void SetEnemy(string id, Material material = null)
         {
             if (_enemyInstance == null)
                 _enemyInstance = Instantiate(_enemyClass).GetComponent<CharacterBase>();
 
             _enemyInstance.TeamId = id;
             _enemyInstance.transform.position = transform.position;
+
+            if (material)
+                _enemyInstance.SetMateral(material);
         }
 
         public void DeleteEnemy()

@@ -18,6 +18,22 @@ namespace Diamond.SkeletonDefense.Character
         protected CharacterBase _targetEnemy;
 
         /// <summary>
+        /// Materials is adapted to character
+        /// </summary>
+        [SerializeField]
+        private List<SkinnedMeshRenderer> _skins;
+
+        /// <summary>
+        /// Set Character material
+        /// </summary>
+        /// <param name="material">material</param>
+        public virtual void SetMateral(Material material)
+        {
+            if(_skins != null && _skins.Count > 0 && material != null)
+                _skins.ForEach(skin => skin.material = material);
+        }
+
+        /// <summary>
         /// Status of character
         /// </summary>
         [SerializeField]
