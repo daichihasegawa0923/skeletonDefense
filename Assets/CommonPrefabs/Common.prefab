@@ -86,7 +86,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
 --- !u!114 &1004238874417537649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,7 +305,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
-    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -439,7 +437,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
-    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -572,7 +569,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
-    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -639,13 +635,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1004238874712863523}
-  m_LocalRotation: {x: 0.56319785, y: -0, z: -0, w: 0.82632214}
-  m_LocalPosition: {x: -962.45, y: -527.2, z: 0}
+  m_LocalRotation: {x: 0.4366081, y: -0, z: -0, w: 0.8996518}
+  m_LocalPosition: {x: -962.45, y: -528.27, z: -0.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1004238875752064253}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 68.554, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 51.775, y: 0, z: 0}
 --- !u!20 &1004238874712863521
 Camera:
   m_ObjectHideFlags: 0
@@ -1518,7 +1514,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
 --- !u!114 &1004238875490323710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1678,7 +1673,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
-    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -2094,7 +2088,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
 --- !u!114 &1004238875677904261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2276,7 +2269,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
 --- !u!114 &1004238875714721577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2593,7 +2585,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
-    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -2726,7 +2717,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
-    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -3112,7 +3102,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
-    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -3377,7 +3366,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 8047392aabc5e9544ae3397f624c6417,
+      objectReference: {fileID: 21300000, guid: 9b86e2a6d1d10424a83e303171b6cb40,
         type: 3}
     - target: {fileID: 5328123373304298229, guid: df57d4c46267fa74faa108a4a12f1ab5,
         type: 3}
@@ -3659,7 +3648,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 8047392aabc5e9544ae3397f624c6417,
+      objectReference: {fileID: 21300000, guid: 0bf9193e1ed87ce4aa36e9fdb2b6f89f,
         type: 3}
     - target: {fileID: 5328123373304298229, guid: df57d4c46267fa74faa108a4a12f1ab5,
         type: 3}
@@ -3826,12 +3815,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df57d4c46267fa74faa108a4a12f1ab5, type: 3}
---- !u!224 &3377481593275425238 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5328123373304298226, guid: df57d4c46267fa74faa108a4a12f1ab5,
-    type: 3}
-  m_PrefabInstance: {fileID: 7435005822412266276}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3377481593275425233 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5328123373304298229, guid: df57d4c46267fa74faa108a4a12f1ab5,
@@ -3844,6 +3827,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ff461f5b3abb85408ab4fb09ec0b2ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &3377481593275425238 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5328123373304298226, guid: df57d4c46267fa74faa108a4a12f1ab5,
+    type: 3}
+  m_PrefabInstance: {fileID: 7435005822412266276}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9044353159124509015
 PrefabInstance:
   m_ObjectHideFlags: 0
