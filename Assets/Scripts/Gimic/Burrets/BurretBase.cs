@@ -10,6 +10,9 @@ namespace Diamond.SkeletonDefense.Gimic.Burrets
         [SerializeField]
         protected int _power = 30;
 
+        [SerializeField]
+        protected GameObject _particleSystems;
+
         protected virtual void OnTriggerEnter(Collider collider)
         {
             var character = collider.gameObject.GetComponent<CharacterBase>();
@@ -24,6 +27,8 @@ namespace Diamond.SkeletonDefense.Gimic.Burrets
             character.Damaged(_power);
             transform.parent = character.transform;
             Destroy(GetComponent<Rigidbody>());
+            _particleSystems.transform.parent = null;
+            Destroy(_particleSystems, 5.0f);
             Destroy(this);
         }
     }
