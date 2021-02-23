@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 1118736569155529369}
   - component: {fileID: 1530634695277678444}
   - component: {fileID: 3671337244411994969}
+  - component: {fileID: 8077400083102667502}
   m_Layer: 0
   m_Name: arrow
   m_TagString: Untagged
@@ -93,7 +94,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _power: 100
-  _rayPositionBase: {fileID: 8110300404255321446}
+--- !u!65 &8077400083102667502
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 346034278925168675}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.14677578, y: 0.08420973, z: 0.11957741}
+  m_Center: {x: -0.016839892, y: -0.01229265, z: 0.43546605}
 --- !u!1 &8737150092195268858
 GameObject:
   m_ObjectHideFlags: 0

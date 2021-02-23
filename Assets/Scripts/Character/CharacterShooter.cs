@@ -45,7 +45,7 @@ namespace Diamond.SkeletonDefense.Character
                 burretInstance.transform.LookAt(_targetEnemy.transform.position);
             }
 
-            Destroy(burretInstance, 5.0f);
+            Destroy(burretInstance, 20.0f);
         }
     }
 }
