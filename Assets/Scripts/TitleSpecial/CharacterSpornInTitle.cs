@@ -20,11 +20,6 @@ namespace Diamond.SkeletonDefense.TitleSpecial
             SpornCharacter();
         }
 
-        void Update()
-        {
-            transform.eulerAngles += Vector3.up;
-        }
-
         /// <summary>
         /// Sporn the random characters
         /// </summary>

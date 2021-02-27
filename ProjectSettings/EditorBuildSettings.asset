@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BattleFaze/BattleFaze_02.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/ReleaseNewCharacter.unity
+    guid: 8421a650b9978496b89be5034ad79fd1
   m_configObjects: {}

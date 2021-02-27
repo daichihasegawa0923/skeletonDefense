@@ -7,7 +7,7 @@ namespace Diamond.SkeletonDefense.Data
     {
         public static void Add<T>(this List<T> list,T item, bool isAllowDuplicate)
         {
-            if (!isAllowDuplicate)
+            if (isAllowDuplicate)
             {
                 list.Add(item);
                 return;

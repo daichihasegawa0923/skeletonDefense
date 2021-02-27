@@ -912,7 +912,6 @@ Light:
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
-  m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!4 &705507995
@@ -2213,6 +2212,12 @@ PrefabInstance:
       propertyPath: _setEnemyInfos.Array.data[2]
       value: 
       objectReference: {fileID: 1309900563}
+    - target: {fileID: 1004238876394025800, guid: dff6f67ea713a40a1aef1d959a738ad8,
+        type: 3}
+      propertyPath: _releaseCharacter
+      value: 
+      objectReference: {fileID: 4149338620457551199, guid: 0d1d895a6cb76e84b8c7ba0eb5ed28a7,
+        type: 3}
     - target: {fileID: 1004238876493954334, guid: dff6f67ea713a40a1aef1d959a738ad8,
         type: 3}
       propertyPath: _enemyClass

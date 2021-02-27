@@ -82,6 +82,8 @@ namespace Diamond.SkeletonDefense
         [SerializeField]
         private string _releaseNewCharacterSceneName;
 
+        private bool _isNewCharacterReleased = false;
+
         /// <summary>
         ///  現在配置されているキャラクターの総コスト
         /// </summary>
@@ -201,7 +203,12 @@ namespace Diamond.SkeletonDefense
                 {
                     var data = SaveData.Load();
                     if(this._releaseCharacter)
-                        data.ReleasedCharacterNames.Add(this._releaseCharacter.name,false);
+                    {
+                        var count = data.ReleasedCharacterNames.Count;
+                        data.ReleasedCharacterNames.Add(this._releaseCharacter.name, false);
+                        // 新しいキャラクターが解放されたかどうかの判定
+                        _isNewCharacterReleased = count != data.ReleasedCharacterNames.Count;
+                    }
 
                     if(!string.IsNullOrWhiteSpace(this._releaseSceneName))
                         data.ReleasedStageNames.Add(_releaseSceneName,false);
@@ -361,22 +368,13 @@ namespace Diamond.SkeletonDefense
             _sceneLoader.SceneLoad(sceneName);
         }
 
-        public bool IsNewCharaterReleased()
-        {
-            if (!this._releaseCharacter)
-                return false;
-
-            var saveData = SaveData.Load();
-            return !saveData.ReleasedCharacterNames.Contains(this._releaseCharacter.name);
-        }
-
         public void GoToNextScene()
         {
-            if(IsNewCharaterReleased())
+            if(_isNewCharacterReleased)
             {
                 var ncinfo = ReleaseNewCharacterInfo.GetReleaseNewCharacterInfo();
                 ncinfo._newCharacterName = this._releaseCharacter.name;
-                ncinfo._nextStageName = this._releaseSceneName;
+                ncinfo._nextStageName = string.IsNullOrWhiteSpace(this._releaseSceneName) ? "Title": this._releaseSceneName;
                 SceneLoad(this._releaseNewCharacterSceneName);
 
                 return;
