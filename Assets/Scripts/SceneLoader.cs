@@ -15,6 +15,11 @@ namespace Diamond.SkeletonDefense
         [SerializeField]
         private ActiveCanvasSwitcher _activeCanvasSwitcher;
 
+        private void Awake()
+        {
+            _fade.gameObject.SetActive(true);
+        }
+
         // Start is called before the first frame update
         void Start()
         {

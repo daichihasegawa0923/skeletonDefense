@@ -27,8 +27,11 @@ namespace Diamond.SkeletonDefense.Gimic.Burrets
             character.Damaged(_power);
             transform.parent = character.transform;
             Destroy(GetComponent<Rigidbody>());
-            _particleSystems.transform.parent = null;
-            Destroy(_particleSystems, 5.0f);
+            if(_particleSystems)
+            {
+                _particleSystems.transform.parent = null;
+                Destroy(_particleSystems, 5.0f);
+            }
             Destroy(this);
         }
     }

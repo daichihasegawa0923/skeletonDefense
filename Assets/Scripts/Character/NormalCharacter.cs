@@ -48,6 +48,7 @@ namespace Diamond.SkeletonDefense.Character
             if(_enemies != null && _enemies.Count() != 0)
             {
                 transform.LookAt(_enemies[0].transform.position);
+                Debug.Log(_enemies[0].name);
             }
         }
 
@@ -99,7 +100,7 @@ namespace Diamond.SkeletonDefense.Character
                     var targetEn = this.FindTargetEnemy();
                     if (targetEn == null)
                     {
-                        this.CharacterBehaviour = CharacterBehaviour.Stay;
+                        ChangeBehaviour(CharacterBehaviour.Stay);
                         return;
                     }
                     if(_targetEnemy != targetEn)

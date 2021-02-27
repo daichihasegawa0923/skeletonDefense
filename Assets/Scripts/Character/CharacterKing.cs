@@ -4,33 +4,12 @@ using UnityEngine;
 
 namespace Diamond.SkeletonDefense.Character
 {
-    public class CharacterShooter:NormalCharacter
+    public class CharacterKing:CharacterShooter
     {
-        /// <summary>
-        ///  Burret
-        /// </summary>
-        [SerializeField]
-        protected GameObject _burret;
-
-        [SerializeField]
-        protected float _burretSpeed;
-
-        [SerializeField]
-        protected Transform _burretFromPosition;
-
-        public override void Attack()
-        {
-            if(this.IsNearEnemy())
-            {
-                this._animator.SetTrigger(NormalCharacter.ATTACK_ANIMATION_TRIGGER);
-                this._animator.SetTrigger(NormalCharacter.STAY_ANIMATION_TRIGGER);
-            }
-        }
-
         /// <summary>
         /// Act in animation
         /// </summary>
-        public virtual void Shoot()
+        public override void Shoot()
         {
             if (!_burret)
                 return;
@@ -45,7 +24,8 @@ namespace Diamond.SkeletonDefense.Character
                 burretInstance.transform.LookAt(_targetEnemy.transform.position);
             }
 
-            Destroy(burretInstance, 20.0f);
+            var chara = burretInstance.GetComponent<CharacterBase>();
+            chara.ChangeBehaviour(CharacterBehaviour.Move);
         }
     }
 }
