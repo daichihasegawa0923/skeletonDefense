@@ -13,6 +13,18 @@ namespace Diamond.SkeletonDefense.Character
     public abstract class CharacterBase : MonoBehaviour
     {
         /// <summary>
+        /// Character name
+        /// </summary>
+        [SerializeField]
+        protected string _name;
+
+        /// <summary>
+        /// Description
+        /// </summary>
+        [SerializeField]
+        private string description;
+
+        /// <summary>
         /// 攻撃対象の敵
         /// </summary>
         protected CharacterBase _targetEnemy;
@@ -48,7 +60,10 @@ namespace Diamond.SkeletonDefense.Character
         /// <summary>
         /// キャラクターの状態
         /// </summary>
-        public CharacterBehaviour CharacterBehaviour { set; get; }
+        public CharacterBehaviour CharacterBehaviour { set => _characterBehaviour = value; get => _characterBehaviour; }
+
+        [SerializeField]
+        protected CharacterBehaviour _characterBehaviour;
 
         /// <summary>
         /// キャラクターのステータス
@@ -64,6 +79,10 @@ namespace Diamond.SkeletonDefense.Character
         /// チームID
         /// </summary>
         public virtual string TeamId { get; set; }
+
+        public string Name { get => _name; private set => _name = value; }
+
+        public string Description { get => description; private set => description = value; }
 
         /// <summary>
         /// 攻撃を受けたときの挙動

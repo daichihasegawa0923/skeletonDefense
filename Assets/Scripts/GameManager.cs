@@ -77,6 +77,12 @@ namespace Diamond.SkeletonDefense
         private SceneLoader _sceneLoader;
 
         /// <summary>
+        /// Scene when new character is released.
+        /// </summary>
+        [SerializeField]
+        private string _releaseNewCharacterSceneName;
+
+        /// <summary>
         ///  現在配置されているキャラクターの総コスト
         /// </summary>
         public int CurrentCost
@@ -278,6 +284,18 @@ namespace Diamond.SkeletonDefense
             ChangeGameFaze(GameFaze.InBattle);
         }
 
+        public void DeleteAllCharacters()
+        {
+            var characters = FindObjectsOfType<CharacterBase>();
+            if (characters == null || characters.Length == 0)
+                return;
+
+            foreach(var character in characters)
+            {
+                Destroy(character.gameObject);
+            }
+        }
+
         public void ResetEnemySet()
         {
             foreach(var ene in _setEnemyInfos)
@@ -314,6 +332,7 @@ namespace Diamond.SkeletonDefense
                 case GameFaze.PrepareForFighting:
                     _fingerControlManager.CanEditPlayerCharacter = true;
                     _battleFazeUIManager.SetPrepareUI();
+                    DeleteAllCharacters();
                     ResetEnemySet();
                     ResetPlayerSet();
                     _putables.ForEach(p => p.SetActive(true));
@@ -342,8 +361,26 @@ namespace Diamond.SkeletonDefense
             _sceneLoader.SceneLoad(sceneName);
         }
 
+        public bool IsNewCharaterReleased()
+        {
+            if (!this._releaseCharacter)
+                return false;
+
+            var saveData = SaveData.Load();
+            return !saveData.ReleasedCharacterNames.Contains(this._releaseCharacter.name);
+        }
+
         public void GoToNextScene()
         {
+            if(IsNewCharaterReleased())
+            {
+                var ncinfo = ReleaseNewCharacterInfo.GetReleaseNewCharacterInfo();
+                ncinfo._newCharacterName = this._releaseCharacter.name;
+                ncinfo._nextStageName = this._releaseSceneName;
+                SceneLoad(this._releaseNewCharacterSceneName);
+
+                return;
+            }
             if (!string.IsNullOrWhiteSpace(this._releaseSceneName))
                 SceneLoad(this._releaseSceneName);
             else
