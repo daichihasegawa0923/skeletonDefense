@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Title/Title.unity
     guid: 2d6306ea92098b7449684858f8d8e404
   - enabled: 1
+    path: Assets/Scenes/CharacterInfos.unity
+    guid: ddaef14960d234a01ad80530dcca248a
+  - enabled: 1
     path: Assets/Scenes/BattleFaze/BattleFaze_01.unity
     guid: 8b03e3866a0214c03b85aca91b4165de
   - enabled: 1

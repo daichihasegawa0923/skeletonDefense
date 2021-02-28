@@ -23,6 +23,17 @@ namespace Diamond.SkeletonDefense.UI
         private GameResultUI _resultUI;
 
         /// <summary>
+        /// ゲームクリア後、タイトルへ移動するボタン
+        /// </summary>
+        [SerializeField]
+        private Button _toTitleButton;
+
+        public void ToTitleDisable()
+        {
+            _toTitleButton.interactable = false;
+        }
+
+        /// <summary>
         /// キャラクターのボタンのリスト
         /// </summary>
         [SerializeField]

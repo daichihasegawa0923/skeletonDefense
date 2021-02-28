@@ -208,6 +208,11 @@ namespace Diamond.SkeletonDefense
                         data.ReleasedCharacterNames.Add(this._releaseCharacter.name, false);
                         // 新しいキャラクターが解放されたかどうかの判定
                         _isNewCharacterReleased = count != data.ReleasedCharacterNames.Count;
+                        // 新しいキャラクターが解放された時は、タイトルへ戻るボタンを表示しない
+                        if(_isNewCharacterReleased)
+                        {
+                            _battleFazeUIManager.ToTitleDisable();
+                        }
                     }
 
                     if(!string.IsNullOrWhiteSpace(this._releaseSceneName))

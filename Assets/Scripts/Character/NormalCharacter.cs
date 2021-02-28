@@ -35,9 +35,6 @@ namespace Diamond.SkeletonDefense.Character
 
         protected virtual void Start()
         {
-            // アニメーションのtriggerを外す
-            this._animator.ResetTrigger(NormalCharacter.STAY_ANIMATION_TRIGGER);
-
             this.CharacterStatus = GetComponent<CharacterStatus>();
             this.Rigidbody = GetComponent<Rigidbody>();
             this.Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
@@ -62,7 +59,7 @@ namespace Diamond.SkeletonDefense.Character
         {
             if(_targetEnemy == null || this.IsDead() || !IsNearEnemy())
             {
-                StopCoroutine("AttackCoroutine");
+                StopAllCoroutines();
                 this.ChangeBehaviour(CharacterBehaviour.Move);
                 return;
             }
@@ -146,7 +143,8 @@ namespace Diamond.SkeletonDefense.Character
 
         protected override IEnumerator AttackCoroutine()
         {
-            while(true)
+            this._animator.SetTrigger(NormalCharacter.STAY_ANIMATION_TRIGGER);
+            while (true)
             {
                 yield return new WaitForSeconds(this.CharacterStatus.FrequenceOfAttack);
                 this.Attack();
@@ -187,8 +185,7 @@ namespace Diamond.SkeletonDefense.Character
                     animationSetTriggerAction(NormalCharacter.WALK_ANIMATION_TRIGGER);
                     break;
                 case CharacterBehaviour.Attack:
-                    StartCoroutine("AttackCoroutine");
-                    animationSetTriggerAction(NormalCharacter.ATTACK_ANIMATION_TRIGGER);
+                    StartCoroutine(AttackCoroutine());
                     break;
                 case CharacterBehaviour.Dead: 
                     break;
