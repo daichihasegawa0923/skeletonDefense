@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BattleFaze/BattleFaze_03.unity
     guid: 904279babbf1e491897be2fa00b78289
+  - enabled: 1
+    path: Assets/Scenes/BattleFaze/BattleFaze_04.unity
+    guid: 25d730b876ea44f7a96c7db83146c0b9
   m_configObjects: {}
