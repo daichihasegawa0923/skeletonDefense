@@ -2164,6 +2164,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c828571285440444f9569fec8430667d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _name: Swordfighter
+  description: Basic skeleton monster.
   _skins:
   - {fileID: 3964892225422827794}
   - {fileID: 4504701093998424103}
@@ -2173,6 +2175,7 @@ MonoBehaviour:
   _characterStatus: {fileID: 8076000398967352352}
   _deadEffect: {fileID: 6964388126146130000, guid: e2104e460e7864ee1bdfa8da35ee1d9a,
     type: 3}
+  _characterBehaviour: 0
   _teamId: 1
   _animator: {fileID: 8076000398967352354}
   _enemies: []

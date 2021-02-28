@@ -1600,6 +1600,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1004238876394025800, guid: dff6f67ea713a40a1aef1d959a738ad8,
         type: 3}
+      propertyPath: _releaseCharacter
+      value: 
+      objectReference: {fileID: 2324329232360585365, guid: 2f6382e69a2ab43d2b4cb7066af87154,
+        type: 3}
+    - target: {fileID: 1004238876394025800, guid: dff6f67ea713a40a1aef1d959a738ad8,
+        type: 3}
       propertyPath: _putables.Array.size
       value: 1
       objectReference: {fileID: 0}

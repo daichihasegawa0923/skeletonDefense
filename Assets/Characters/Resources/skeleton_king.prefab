@@ -1111,7 +1111,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3206779326163812417}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 8.09, y: 0, z: 4.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1122,7 +1122,7 @@ Transform:
   - {fileID: 8903946438348755003}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!54 &2324329232360585364
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1184,10 +1184,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 511653a514d23814ea5409f91587064e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _name: King
+  description: Call swordfighters
   _skins: []
   _characterStatus: {fileID: 2324329232360585363}
   _deadEffect: {fileID: 6964388126146130000, guid: e2104e460e7864ee1bdfa8da35ee1d9a,
     type: 3}
+  _characterBehaviour: 0
   _teamId: 1
   _animator: {fileID: 2324329232360585361}
   _enemies: []
@@ -1206,13 +1209,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b87ccc9d92d5c4b1b9796e4bf536f481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hp: 1000
+  Hp: 650
   Power: 0
   Speed: 0.25
   Defense: 0
   DistanseBetweenEnemy: 20
-  FrequenceOfAttack: 10
-  cost: 250
+  FrequenceOfAttack: 20
+  cost: 300
 --- !u!1 &3317185258030211386
 GameObject:
   m_ObjectHideFlags: 0

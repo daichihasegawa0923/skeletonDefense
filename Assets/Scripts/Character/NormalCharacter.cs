@@ -148,8 +148,8 @@ namespace Diamond.SkeletonDefense.Character
         {
             while(true)
             {
-                this.Attack();
                 yield return new WaitForSeconds(this.CharacterStatus.FrequenceOfAttack);
+                this.Attack();
             }
         }
 

@@ -1153,7 +1153,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4645048015107367616}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -1.733, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1167,7 +1167,7 @@ Transform:
   - {fileID: 8967249545611605413}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &5528150258067349385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1181,11 +1181,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: 1000
-  Power: 1
+  Power: 200
   Speed: 0.1
   Defense: 0
   DistanseBetweenEnemy: 1.5
-  FrequenceOfAttack: 1
+  FrequenceOfAttack: 15
   cost: 60
 --- !u!54 &5528150258067349390
 Rigidbody:
@@ -1215,6 +1215,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10eeba299a9764afa85be47ec5544607, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _name: Monster
+  description: High hp ,High power and slow moving
   _skins:
   - {fileID: 8811236494292686143}
   - {fileID: 8341235333888328714}
@@ -1226,6 +1228,7 @@ MonoBehaviour:
   _characterStatus: {fileID: 5528150258067349385}
   _deadEffect: {fileID: 6964388126146130000, guid: e2104e460e7864ee1bdfa8da35ee1d9a,
     type: 3}
+  _characterBehaviour: 0
   _teamId: 1
   _animator: {fileID: 5528150258067349389}
   _enemies: []
