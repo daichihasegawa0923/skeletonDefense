@@ -182,7 +182,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
 --- !u!223 &17875485
 Canvas:
   m_ObjectHideFlags: 0
@@ -553,7 +552,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
-    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -748,8 +746,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 342, y: -92}
-  m_SizeDelta: {x: 570.4493, y: 122.80829}
+  m_AnchoredPosition: {x: 211.4, y: -93.7}
+  m_SizeDelta: {x: 309.26526, y: 126.13519}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &461450500
 MonoBehaviour:
@@ -1089,7 +1087,6 @@ Light:
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
-  m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!4 &926049345
@@ -1279,7 +1276,6 @@ Light:
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
-  m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!4 &1883355217
@@ -1495,12 +1491,12 @@ PrefabInstance:
     - target: {fileID: 8315463510278547724, guid: fe40e18fc02d64eeab050eeddf0c0613,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -175.21742
+      value: -147
       objectReference: {fileID: 0}
     - target: {fileID: 8315463510278547724, guid: fe40e18fc02d64eeab050eeddf0c0613,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -221.73605
+      value: -149
       objectReference: {fileID: 0}
     - target: {fileID: 8315463510278547724, guid: fe40e18fc02d64eeab050eeddf0c0613,
         type: 3}
