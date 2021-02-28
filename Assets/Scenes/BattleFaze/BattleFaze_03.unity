@@ -615,16 +615,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1004238876350666155, guid: dff6f67ea713a40a1aef1d959a738ad8,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 44.30005
+      objectReference: {fileID: 0}
+    - target: {fileID: 1004238876350666155, guid: dff6f67ea713a40a1aef1d959a738ad8,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -36.599976
+      objectReference: {fileID: 0}
     - target: {fileID: 1004238876394025800, guid: dff6f67ea713a40a1aef1d959a738ad8,
         type: 3}
       propertyPath: _maxCost
-      value: 70
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1004238876394025800, guid: dff6f67ea713a40a1aef1d959a738ad8,
         type: 3}
       propertyPath: _releaseCharacter
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1004238876394025800, guid: dff6f67ea713a40a1aef1d959a738ad8,
+        type: 3}
+      propertyPath: _putables.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1004238876394025800, guid: dff6f67ea713a40a1aef1d959a738ad8,
+        type: 3}
+      propertyPath: _putables.Array.data[0]
+      value: 
+      objectReference: {fileID: 552954916}
     - target: {fileID: 1004238876394025800, guid: dff6f67ea713a40a1aef1d959a738ad8,
         type: 3}
       propertyPath: _setEnemyInfos.Array.size

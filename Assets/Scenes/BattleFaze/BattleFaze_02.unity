@@ -482,6 +482,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1004238876394025800, guid: dff6f67ea713a40a1aef1d959a738ad8,
         type: 3}
+      propertyPath: _maxCost
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1004238876394025800, guid: dff6f67ea713a40a1aef1d959a738ad8,
+        type: 3}
       propertyPath: _releaseCharacter
       value: 
       objectReference: {fileID: 4149338620457551199, guid: 0d1d895a6cb76e84b8c7ba0eb5ed28a7,
@@ -491,6 +496,16 @@ PrefabInstance:
       propertyPath: _releaseSceneName
       value: BattleFaze_03
       objectReference: {fileID: 0}
+    - target: {fileID: 1004238876394025800, guid: dff6f67ea713a40a1aef1d959a738ad8,
+        type: 3}
+      propertyPath: _putables.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1004238876394025800, guid: dff6f67ea713a40a1aef1d959a738ad8,
+        type: 3}
+      propertyPath: _putables.Array.data[0]
+      value: 
+      objectReference: {fileID: 552954916}
     - target: {fileID: 1004238876394025800, guid: dff6f67ea713a40a1aef1d959a738ad8,
         type: 3}
       propertyPath: _setEnemyInfos.Array.size

@@ -3058,7 +3058,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _stageImage
       value: 
-      objectReference: {fileID: 21300000, guid: 6b40bfd4a31e5b84aa0ce7d284b3f6c6,
+      objectReference: {fileID: 21300000, guid: 6dc340404501a45f7be874a0b3ae6570,
         type: 3}
     - target: {fileID: 4905783987842901927, guid: 76fec911168dc441db52f59f00f52617,
         type: 3}

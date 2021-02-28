@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: 300
-  Power: 40
+  Power: 80
   Speed: 0.75
   Defense: 0
   DistanseBetweenEnemy: 2
