@@ -46,20 +46,20 @@ namespace Diamond.SkeletonDefense.CharacterInfos
 
         public void SetNextCharacter()
         {
-            if (_currentIndex >= _characterBases.Count - 1)
-                return;
-
             _currentIndex++;
+
+            if (_currentIndex >= _characterBases.Count)
+                _currentIndex = 0;
 
             SetCharacterSet(_currentIndex);
         }
 
         public void SetPreviousCharacter()
         {
-            if (_currentIndex == 0)
-                return;
-
             _currentIndex--;
+
+            if (_currentIndex < 0)
+                _currentIndex = _characterBases.Count - 1;
 
             SetCharacterSet(_currentIndex);
         }
