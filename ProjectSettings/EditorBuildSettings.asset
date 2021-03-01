@@ -26,4 +26,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BattleFaze/BattleFaze_04.unity
     guid: 25d730b876ea44f7a96c7db83146c0b9
+  - enabled: 1
+    path: Assets/Scenes/BattleFaze/BattleFaze_05.unity
+    guid: d0b88ffa9cdf749b78578f1212ecc659
+  - enabled: 1
+    path: Assets/Scenes/BattleFaze/BattleFaze_06.unity
+    guid: 3a9a45d628cf74ba1a2ad2d122853449
+  - enabled: 1
+    path: Assets/Scenes/BattleFaze/BattleFaze_07.unity
+    guid: d7801beae1f6947baacb77f24ad6525a
+  - enabled: 1
+    path: Assets/Scenes/BattleFaze/BattleFaze_08.unity
+    guid: 6500ccd533fde470493c7732be265fd7
   m_configObjects: {}

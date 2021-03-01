@@ -1182,11 +1182,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Hp: 1000
   Power: 200
-  Speed: 0.1
+  Speed: 0.2
   Defense: 0
-  DistanseBetweenEnemy: 1.5
-  FrequenceOfAttack: 15
-  cost: 60
+  DistanseBetweenEnemy: 3
+  FrequenceOfAttack: 1
+  cost: 80
 --- !u!54 &5528150258067349390
 Rigidbody:
   m_ObjectHideFlags: 0

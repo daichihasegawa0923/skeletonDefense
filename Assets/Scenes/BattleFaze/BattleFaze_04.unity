@@ -296,6 +296,7 @@ Light:
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!4 &705507995
@@ -501,8 +502,8 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1004238874712863521, guid: dff6f67ea713a40a1aef1d959a738ad8,
         type: 3}
-      propertyPath: m_BackGroundColor.r
-      value: 0.58142525
+      propertyPath: m_BackGroundColor.b
+      value: 0.43854573
       objectReference: {fileID: 0}
     - target: {fileID: 1004238874712863521, guid: dff6f67ea713a40a1aef1d959a738ad8,
         type: 3}
@@ -511,8 +512,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1004238874712863521, guid: dff6f67ea713a40a1aef1d959a738ad8,
         type: 3}
-      propertyPath: m_BackGroundColor.b
-      value: 0.43854573
+      propertyPath: m_BackGroundColor.r
+      value: 0.58142525
       objectReference: {fileID: 0}
     - target: {fileID: 1004238875526252258, guid: dff6f67ea713a40a1aef1d959a738ad8,
         type: 3}
@@ -596,16 +597,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1004238876394025800, guid: dff6f67ea713a40a1aef1d959a738ad8,
         type: 3}
-      propertyPath: _putables.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1004238876394025800, guid: dff6f67ea713a40a1aef1d959a738ad8,
-        type: 3}
-      propertyPath: _setEnemyInfos.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1004238876394025800, guid: dff6f67ea713a40a1aef1d959a738ad8,
-        type: 3}
       propertyPath: _maxCost
       value: 140
       objectReference: {fileID: 0}
@@ -617,9 +608,24 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 1004238876394025800, guid: dff6f67ea713a40a1aef1d959a738ad8,
         type: 3}
+      propertyPath: _releaseSceneName
+      value: BattleFaze_05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1004238876394025800, guid: dff6f67ea713a40a1aef1d959a738ad8,
+        type: 3}
+      propertyPath: _putables.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1004238876394025800, guid: dff6f67ea713a40a1aef1d959a738ad8,
+        type: 3}
       propertyPath: _putables.Array.data[0]
       value: 
       objectReference: {fileID: 552954916}
+    - target: {fileID: 1004238876394025800, guid: dff6f67ea713a40a1aef1d959a738ad8,
+        type: 3}
+      propertyPath: _setEnemyInfos.Array.size
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1004238876394025800, guid: dff6f67ea713a40a1aef1d959a738ad8,
         type: 3}
       propertyPath: _setEnemyInfos.Array.data[0]
