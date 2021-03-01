@@ -13,6 +13,12 @@ namespace Diamond.SkeletonDefense.Gimic.Burrets
         [SerializeField]
         protected GameObject _particleSystems;
 
+        /// <summary>
+        /// Ú“G‚µ‚½‚ÉŒø‰Ê‚ªÁ‚¦‚é‚©
+        /// </summary>
+        [SerializeField]
+        private bool _isAttachWithEnemy = true;
+
         protected virtual void OnTriggerEnter(Collider collider)
         {
             var character = collider.gameObject.GetComponent<CharacterBase>();
@@ -25,6 +31,9 @@ namespace Diamond.SkeletonDefense.Gimic.Burrets
         protected virtual void ReachAction(CharacterBase character)
         {
             character.Damaged(_power);
+            if (!_isAttachWithEnemy)
+                return;
+
             transform.parent = character.transform;
             Destroy(GetComponent<Rigidbody>());
             if(_particleSystems)

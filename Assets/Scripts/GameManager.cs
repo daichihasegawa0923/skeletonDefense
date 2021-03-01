@@ -7,6 +7,7 @@ using Diamond.SkeletonDefense.Data;
 using System;
 using UnityEngine.SceneManagement;
 using Diamond.SkeletonDefense.UI;
+using Diamond.SkeletonDefense.Gimic.Burrets;
 
 namespace Diamond.SkeletonDefense
 {
@@ -299,13 +300,18 @@ namespace Diamond.SkeletonDefense
         public void DeleteAllCharacters()
         {
             var characters = FindObjectsOfType<CharacterBase>();
-            if (characters == null || characters.Length == 0)
-                return;
+            var hasNoCharacter = characters == null || characters.Length == 0;
+            var burrets = FindObjectsOfType<BurretBase>();
+            var hasNoBurret = burrets == null || burrets.Length == 0;
 
-            foreach(var character in characters)
-            {
-                Destroy(character.gameObject);
-            }
+            if(!hasNoCharacter)
+                foreach(var character in characters)
+                      Destroy(character.gameObject);
+
+            if (!hasNoBurret)
+                foreach (var burret in burrets)
+                    Destroy(burret.gameObject);
+
         }
 
         public void ResetEnemySet()
@@ -375,19 +381,27 @@ namespace Diamond.SkeletonDefense
 
         public void GoToNextScene()
         {
-            if(_isNewCharacterReleased)
+            try
             {
-                var ncinfo = ReleaseNewCharacterInfo.GetReleaseNewCharacterInfo();
-                ncinfo._newCharacterName = this._releaseCharacter.name;
-                ncinfo._nextStageName = string.IsNullOrWhiteSpace(this._releaseSceneName) ? "Title": this._releaseSceneName;
-                SceneLoad(this._releaseNewCharacterSceneName);
+                if (_isNewCharacterReleased)
+                {
+                    var ncinfo = ReleaseNewCharacterInfo.GetReleaseNewCharacterInfo();
+                    ncinfo._newCharacterName = this._releaseCharacter.name;
+                    ncinfo._nextStageName = string.IsNullOrWhiteSpace(this._releaseSceneName) ? "Title" : this._releaseSceneName;
+                    SceneLoad(this._releaseNewCharacterSceneName);
 
-                return;
+                    return;
+                }
+                if (!string.IsNullOrWhiteSpace(this._releaseSceneName))
+                    SceneLoad(this._releaseSceneName);
+                else
+                    SceneLoad("Title");
             }
-            if (!string.IsNullOrWhiteSpace(this._releaseSceneName))
-                SceneLoad(this._releaseSceneName);
-            else
+            catch
+            {
+                // 何か問題があれば、タイトル画面へ
                 SceneLoad("Title");
+            }
         }
     }
 

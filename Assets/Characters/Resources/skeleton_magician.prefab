@@ -1050,7 +1050,7 @@ MonoBehaviour:
   _animator: {fileID: 4250748273932060636}
   _enemies: []
   _burret: {fileID: 4877933533304423005, guid: 56b3cefd07538ac4fa37b0668009c522, type: 3}
-  _burretSpeed: 0.5
+  _burretSpeed: 1
   _burretFromPosition: {fileID: 4250748273845938992}
 --- !u!114 &4250748273932060627
 MonoBehaviour:
@@ -1068,8 +1068,8 @@ MonoBehaviour:
   Power: 250
   Speed: 0.75
   Defense: 0
-  DistanseBetweenEnemy: 10
-  FrequenceOfAttack: 8
+  DistanseBetweenEnemy: 12
+  FrequenceOfAttack: 4
   cost: 100
 --- !u!1 &3949187516499543557
 GameObject:
