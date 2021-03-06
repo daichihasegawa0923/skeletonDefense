@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Diamond.SkeletonDefense.Util;
 
 namespace Diamond.SkeletonDefense.Character
 {
@@ -174,6 +175,8 @@ namespace Diamond.SkeletonDefense.Character
 
         public override void ChangeBehaviour(CharacterBehaviour characterBehaviour)
         {
+            _animator.ResetAllAnimation();
+
             var animationSetTriggerAction = new Action<string>((name) => { if (_animator == null || name == null) return; _animator.SetTrigger(name); });
 
             switch (characterBehaviour)

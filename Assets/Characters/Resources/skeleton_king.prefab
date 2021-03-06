@@ -1194,7 +1194,7 @@ MonoBehaviour:
   _teamId: 1
   _animator: {fileID: 2324329232360585361}
   _enemies: []
-  _burret: {fileID: 8994495784859832693, guid: 5c8efe866a346664eac5d218f5568228, type: 3}
+  _burret: {fileID: 6816719146439872024, guid: 8b4434d222fcc4ea580e81e0c1e63b90, type: 3}
   _burretSpeed: 0
   _burretFromPosition: {fileID: 2324329232769846153}
 --- !u!114 &2324329232360585363
@@ -1213,7 +1213,7 @@ MonoBehaviour:
   Power: 0
   Speed: 0.25
   Defense: 0
-  DistanseBetweenEnemy: 20
+  DistanseBetweenEnemy: 999
   FrequenceOfAttack: 20
   cost: 300
 --- !u!1 &3317185258030211386

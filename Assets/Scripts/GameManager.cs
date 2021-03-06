@@ -266,11 +266,12 @@ namespace Diamond.SkeletonDefense
         /// </summary>
         public void Clear()
         {
-            this._setPlayerCharacterInfos.ForEach(info =>
+            for(var i = 0; i < this._setPlayerCharacterInfos.Count; i++)
             {
-                Destroy(info.CharacterBase.gameObject);
-                Destroy(info.gameObject);
-            });
+                if (_setPlayerCharacterInfos[i].CharacterBase != null)
+                    Destroy(_setPlayerCharacterInfos[i].CharacterBase.gameObject);
+                Destroy(_setPlayerCharacterInfos[i].gameObject);
+            }
 
             this._setPlayerCharacterInfos.Clear();
             this._battleFazeUIManager.SetCurrentCostCountText(CurrentCost);
