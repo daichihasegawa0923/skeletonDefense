@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6087250092614103670}
   - component: {fileID: 6087250092614103669}
   m_Layer: 5
-  m_Name: Fight
+  m_Name: Button_Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.66834843, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.8694969, b: 0.6084906, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -244,7 +244,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.7596016, y: 0.15190029}
+  m_AnchoredPosition: {x: 0.7595978, y: 0.15190125}
   m_SizeDelta: {x: -11.2415, y: -10.0262}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6087250093446762308

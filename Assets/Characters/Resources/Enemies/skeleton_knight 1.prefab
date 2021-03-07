@@ -1696,7 +1696,7 @@ MonoBehaviour:
   _deadEffect: {fileID: 6964388126146130000, guid: e2104e460e7864ee1bdfa8da35ee1d9a,
     type: 3}
   _characterBehaviour: 0
-  _teamId: 1
+  _teamId: 2
   _animator: {fileID: 5933686176067760971}
   _enemies: []
 --- !u!136 &5933686176067760972

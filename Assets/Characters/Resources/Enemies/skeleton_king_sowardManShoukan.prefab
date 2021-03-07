@@ -1098,7 +1098,7 @@ GameObject:
   - component: {fileID: 2324329232360585365}
   - component: {fileID: 2324329232360585363}
   m_Layer: 0
-  m_Name: skeleton_king
+  m_Name: skeleton_king_sowardManShoukan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1197,7 +1197,7 @@ MonoBehaviour:
   _teamId: 1
   _animator: {fileID: 2324329232360585361}
   _enemies: []
-  _burret: {fileID: 6816719146439872024, guid: 8b4434d222fcc4ea580e81e0c1e63b90, type: 3}
+  _burret: {fileID: 8994495784859832693, guid: bb4b2883cd76d466b83af810516a6e94, type: 3}
   _burretSpeed: 0
   _burretFromPosition: {fileID: 2324329232769846153}
 --- !u!114 &2324329232360585363
@@ -1217,7 +1217,7 @@ MonoBehaviour:
   Speed: 0.25
   Defense: 0
   DistanseBetweenEnemy: 999
-  FrequenceOfAttack: 20
+  FrequenceOfAttack: 5
   cost: 300
 --- !u!1 &3317185258030211386
 GameObject:
