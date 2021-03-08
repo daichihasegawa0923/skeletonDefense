@@ -71,6 +71,9 @@ namespace Diamond.SkeletonDefense.Character
         public override void Damaged(int damage)
         {
             var damageResult = damage - this.CharacterStatus.Defense;
+            if (damageResult < 0)
+                damageResult = 0;
+
             this.CharacterStatus.Hp -= damageResult;
         }
 

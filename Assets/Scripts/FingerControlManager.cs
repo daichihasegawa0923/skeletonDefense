@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Diamond.SkeletonDefense.Character;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Diamond.SkeletonDefense
 {
@@ -126,7 +127,17 @@ namespace Diamond.SkeletonDefense
 
         private GameObject RaycastAndGetObject(out Vector3 position)
         {
+
             position = Vector3.zero;
+
+            // GUIクリック時はnullを返す(Unity Editor用）
+            if (EventSystem.current.IsPointerOverGameObject())
+                return null;
+
+            // GUIタップ時はnullを返す（実機用）
+            if (Input.touchCount > 0 && EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+                return null;
+
             var mainCamera = Camera.main;
             RaycastHit raycastHit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

@@ -18,6 +18,9 @@ namespace Diamond.SkeletonDefense.Util
         private bool _startOnAwake;
 
         [SerializeField]
+        private bool _isEnableStart = false;
+
+        [SerializeField]
         private Vector3 _endPosition;
 
         [SerializeField]
@@ -31,6 +34,16 @@ namespace Diamond.SkeletonDefense.Util
 
             if (!_startOnAwake)
                 return;
+
+            AnimationByTransform();
+        }
+
+        private void OnEnable()
+        {
+            if (!_isEnableStart)
+                return;
+
+            transform.position += _differPosition;
 
             AnimationByTransform();
         }

@@ -376,13 +376,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b87ccc9d92d5c4b1b9796e4bf536f481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hp: 500
+  hp: 500
   Power: 1
   Speed: 1.25
   Defense: 0
   DistanseBetweenEnemy: 1.5
   FrequenceOfAttack: 10
   cost: 10
+  _statusUI: {fileID: 0}
 --- !u!1 &1349709047499408044
 GameObject:
   m_ObjectHideFlags: 0

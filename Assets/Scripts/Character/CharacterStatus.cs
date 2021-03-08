@@ -1,15 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Diamond.SkeletonDefense.Character.Status;
 
 namespace Diamond.SkeletonDefense.Character
 {
     public class CharacterStatus : MonoBehaviour
     {
+        [SerializeField]
         /// <summary>
         /// 体力
         /// </summary>
-        public int Hp;
+        private int hp;
 
         /// <summary>
         /// 攻撃力
@@ -40,5 +42,28 @@ namespace Diamond.SkeletonDefense.Character
         /// コスト
         /// </summary>
         public int cost;
+
+        [SerializeField]
+        private StatusUI _statusUI;
+
+        private void Start()
+        {
+            var ui = Resources.Load("CharacterStatusUI");
+            this._statusUI = ((GameObject)Instantiate(ui)).GetComponent<StatusUI>();
+            this._statusUI.SetHpMaxValue(this.Hp);
+            this._statusUI.transform.parent = transform;
+            this._statusUI.transform.localPosition = Vector3.zero + (Vector3.up * 2);
+        }
+
+        public int Hp 
+        { 
+            get => hp; 
+            set
+                {
+                if (value < hp)
+                    _statusUI.DamagedDisplay(hp - value);
+                hp = value; 
+            }
+        }
     }
 }

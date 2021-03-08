@@ -1000,9 +1000,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 1
+  m_Height: 2.3282626
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: -0, y: 0.25296175, z: -0}
 --- !u!95 &4250748273932060636
 Animator:
   serializedVersion: 3
@@ -1065,13 +1065,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b87ccc9d92d5c4b1b9796e4bf536f481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hp: 200
+  hp: 200
   Power: 250
   Speed: 0.75
   Defense: 0
   DistanseBetweenEnemy: 12
   FrequenceOfAttack: 4
   cost: 100
+  _statusUI: {fileID: 0}
 --- !u!1 &3949187516499543557
 GameObject:
   m_ObjectHideFlags: 0
