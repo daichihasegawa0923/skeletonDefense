@@ -1035,7 +1035,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: Wizard
-  description: Slowing fire ball
+  description: Throwing fire ball
   _skins:
   - {fileID: 868511648250289890}
   - {fileID: 398668630753054679}
